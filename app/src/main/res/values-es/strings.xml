@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vida Saludable</string>
+    <string name="titulo_login">Acceda a mi cuenta</string>
+    <string name="titulo_cadastrar">Registrar una cuenta</string>
+
+    //Nome_Título
+    <string name="nome">Vida Saludable</string>
+
+    //Textos_MainActivity
+    <string name="explicacao_app">Bienvenido a Vida Saudável, su nueva aplicación de seguimiento médico.</string>
+    <string name="btnEntrar">Iniciar sesión</string>
+    <string name="btnCadastrar">Registrar</string>
+    <string name="Idioma">Idioma</string>
+
+    //Textos_CadastroActivity
+    <string name="informardados">Ingrese sus datos</string>
+    <string name="verificarinfo">¡Verificaremos su información!</string>
+    <string name="nome_completo">Nombre completo</string>
+    <string name="cpf_padrao">CPF</string>
+    <string name="email">Correo electrónico</string>
+    <string name="senha">Contraseña</string>
+    <string name="btnLimpar">Borrar datos</string>
+
+
+    //Textos_Login
+    <string name="dadosacesso">Ingrese sus datos de inicio de sesión</string>
+    <string name="btnSair">Dejar</string>
+    <string name="esqueceu">¿Olvido la contraseña?</string>
+    <string name="lembrar">Recuérdame</string>
+    <string name="hint_senha">Contraseña</string>
+    <string name="hint_login">Nombre</string>
+
+    //Textos_Recuperar Senha
+    <string name="titulorecuperar">Recuperar contraseña</string>
+    <string name="descricao">Bienvenido, usamos el correo electrónico como método de recuperación de contraseña. Por lo tanto, después de enviar, verifique su contraseña temporal.</string>
+    <string name="btnEnviar">Enviar</string>
+
+
+    //Agendar
+    <string name="hora">Horario</string>
+    <string name="btnAgendar">Programar una hora</string>
+    <string name="desc_calendario">Selecciona una fecha que prefieras</string>
+    <string name="tit_agendamento">Haga su cita</string>
+    <string name="desc_agendamento">¡Sólo tiene que navegar entre las pantallas y rellenar la información necesaria!</string>
+    <string name="tit_final_agendamento">¡Falta pouco! Preencha os últimos dados para agendar sua consulta</string>
+
+
+  <!--  <string-array name="consultorios">
+        <item>Selecciona una oficina</item>
+        <item>HAOC Indaiatuba</item>
+        <item>Unimed Campinas</item>
+        <item>Unimed Monte Mor</item>
+        <item>Santa Casa Itu</item>
+        <item>Santa Casa Salto</item>
+    </string-array>-->
+
+    <string-array name="idioma">
+        <item>PT-BR</item>
+        <item>EN</item>
+        <item>ES</item>
+        <item>FR</item>
+        <item>HU</item>
+        <item>DE</item>
+        <item>IT</item>
+    </string-array>
+
+    // API Calendario Meses
+    <string name="janeiro">Enero</string>
+    <string name="fevereiro">Febrero</string>
+    <string name="marco">Marzo</string>
+    <string name="abril">Abril</string>
+    <string name="maio">Mayo</string>
+    <string name="junho">Junio</string>
+    <string name="julho">Julio  </string>
+    <string name="agosto">Agosto</string>
+    <string name="setembro">Septiembre</string>
+    <string name="outubro">Octubre</string>
+    <string name="novembro">Noviembre</string>
+    <string name="dezembro">Diciembre</string>
+
+
+    // Histórico
+
+    <string name="historico">Historia</string>
+
+    // Avisos
+
+    <string name="avisos_titulo">Advertencias</string>
+
+
+    // API Calendario Semanas
+    <string name="seg">Lun</string>
+    <string name="ter">Mar</string>
+    <string name="qua">Mie</string>
+    <string name="qui">Jue</string>
+    <string name="sex">Vie</string>
+    <string name="sab">Sab</string>
+    <string name="dom">Dom</string>
+
+
+    // Menu Sair Usuário
+    <string name="sair_sim">Si</string>
+    <string name="sair_nao">No</string>
+    <string name="sair_titulo">¿Estás seguro de que quieres irte?</string>
+
+
+
+    <string name="tit_agendar">         Horario</string>
+    <string name="tit_avisos">          Advertencias</string>
+    <string name="tit_historico">       Historia</string>
+    <string name="tit_sair">            Licencia</string>
+    <string name="tit_monitoramento">   Monitoreo</string>
+    <string name="tit_validacao">       Validaciones</string>
+    <string name="tit_consulta">        Consultas</string>
+    <string name="tit_criar_avisos">    Crear Avisos</string>
+    <string name="tit_qr_code">         QR Code</string>
+
+
+    <string name="desc_agendar"> Elige el mejor día para usted!</string>
+    <string name="desc_avisos">  indicaciones de aplicación de pared.</string>
+    <string name="desc_historico">Ver sus horarios.</string>
+    <string name="desc_sair">     ¿Quieres salir de la aplicación?</string>
+    <string name="desc_monitoramento">admisiones monitor.</string>
+    <string name="desc_validacao">    Validaciones enfermeras.</string>
+    <string name="desc_consultas">   Ver que sus pacientes!</string>
+    <string name="desc_criar_avisos">Tipo advertencias a los pacientes.</string>
+    <string name="desc_validacao_enfermeira">Validaciones pacientes.</string>
+    <string name="desc_qr_code">             Compruebe el BPM de la paciente.</string>
+
+
+    <string name="titulo_monitorar">Monitoreo</string>
+    <string name="titulo_validar">  Validación</string>
+    <string name="titulo_avisos">   Mis Avisos</string>
+    <string name="titulo_consultas">Consultas</string>
+
+    <string name="erro_data">Por favor, introduzca una fecha válida!   </string>
+
+
+    <string name="tit_add_agendamento">Datos de la consulta</string>
+    <string name="des_add_agendamento">Necesitamos tiempo, y después de la fecha.</string>
+    <string name="hint_horario">Horario</string>
+    <string name="hint_data">   Fecha</string>
+
+
+    <string name="validacao_senha">La contraseña debe contener al menos 8 caracteres. </string>
+    <string name="validacao_email">Por favor, introduzca un correo electrónico válido. </string>
+    <string name="validacao_documento">Número de Seguridad Social (registro de las personas) no válido o está vacío! </string>
+    <string name="validacao_nome">Nombre no válido. Por favor, introduzca su nombre completo. </string>
+    <string name="categoria">  Seleccione una categoría </string>
+    <string name="tit_medico"> Médico </string>
+    <string name="tit_account">Proyecto de ley </string>
+
+    <string name="tit_perfil">            Perfil de usuario  </string>
+    <string name="desc_perfil">           Cambiar algunos de sus ajustes  </string>
+    <string name="alterar_senha">         Cambiar contraseña  </string>
+    <string name="alterar_dados">         Actualización de datos  </string>
+    <string name="antiga_senha">          Contraseña antigua  </string>
+    <string name="nova_senha">            Nueva contraseña  </string>
+    <string name="alterar">               cambio  </string>
+    <string name="configuracoes">         Ajustes  </string>
+    <string name="desc_account">          Cambiar su información.  </string>
+    <string name="prontuario">            Resumen de registro médico  </string>
+    <string name="historico_bpm">         Historia BPM  </string>
+    <string name="tit_bpm">               Historia BPM  </string>
+    <string name="tit_listar_prontuario"> Archivos  </string>
+    <string name="desc_listar_prontuario">Compruebe todos los registros.  </string>
+    <string name="tit_data">              Fecha  </string>
+    <string name="tit_status">            Estatus  </string>
+    <string name="status_agendamento">    Programado  </string>
+    <string name="desc_bpm">              Ver la historia de BPM de los pacientes  </string>
+
+
+
+</resources>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gesundes Leben</string>
+    <string name="titulo_login">Greifen Sie auf mein Konto zu</string>
+    <string name="titulo_cadastrar">Registrieren Sie ein Konto</string>
+
+    //Nome_Título
+    <string name="nome">Gesundes Leben</string>
+
+    //Textos_MainActivity
+    <string name="explicacao_app">Willkommen bei Vida Saudável, Ihrer neuen medizinischen Tracking-App.</string>
+    <string name="btnEntrar">Einloggen</string>
+    <string name="btnCadastrar">Registrieren</string>
+    <string name="Idioma">sprache</string>
+
+    //Textos_CadastroActivity CPF = Steuerliche Identifikationsnummer na Alemanha
+    <string name="informardados">Geben Sie Ihre Daten ein</string>
+    <string name="verificarinfo">Wir werden Ihre Angaben überprüfen!</string>
+    <string name="nome_completo">Vollständiger Name</string>
+    <string name="cpf_padrao">CPF</string>
+    <string name="email">E-mail</string>
+    <string name="senha">Passwort</string>
+    <string name="btnLimpar">Daten löschen</string>
+
+
+    //Textos_Login
+    <string name="dadosacesso">Geben Sie Ihre Anmeldedaten ein</string>
+    <string name="btnSair">Geh</string>
+    <string name="esqueceu">Passwort vergessen?</string>
+    <string name="lembrar">Erinnere mich</string>
+    <string name="hint_senha">Passwort</string>
+    <string name="hint_login">Einloggen</string>
+
+    //Textos_Recuperar Senha
+    <string name="titulorecuperar">Passwort wiederherstellen</string>
+    <string name="descricao">
+	Willkommen, wir verwenden E-Mail als Passwort-Wiederherstellungsmethode. Überprüfen Sie daher nach dem Absenden Ihr temporäres passwort.</string>
+    <string name="btnEnviar">Senden</string>
+
+
+    //Agendar
+    <string name="hora">Zeitplan</string>
+    <string name="btnAgendar">Zeitplan</string>
+    <string name="desc_calendario">Wählen Sie ein Datum, das Sie bevorzugen</string>
+    <string name="tit_agendamento">Vereinbaren Sie einen Termin</string>
+    <string name="desc_agendamento">Navigieren Sie einfach zwischen den Bildschirmen und geben Sie die erforderlichen Informationen ein!</string>
+    <string name="tit_final_agendamento">Fehlt nur! Geben Sie die neuesten Daten ein, um Ihren Termin zu planen</string>
+
+
+    <!--<string-array name="consultorios">
+        <item>Wählen Sie ein Büro</item>
+        <item>HAOC Indaiatuba</item>
+        <item>Unimed Campinas</item>
+        <item>Unimed Monte Mor</item>
+        <item>Santa Casa Itu</item>
+        <item>Santa Casa Salto</item>
+    </string-array>-->
+
+    <string-array name="idioma">
+        <item>PT-BR</item>
+        <item>EN</item>
+        <item>ES</item>
+        <item>FR</item>
+        <item>HU</item>
+        <item>DE</item>
+        <item>IT</item>
+    </string-array>
+
+    // API Calendario Meses
+    <string name="janeiro">Januar</string>
+    <string name="fevereiro">Februar</string>
+    <string name="marco">März</string>
+    <string name="abril">April</string>
+    <string name="maio">Mai</string>
+    <string name="junho">Juni</string>
+    <string name="julho">Juli</string>
+    <string name="agosto">August</string>
+    <string name="setembro">September</string>
+    <string name="outubro">Oktober</string>
+    <string name="novembro">November</string>
+    <string name="dezembro">Dezember</string>
+
+
+    // Histórico
+
+    <string name="historico">Geschichte</string>
+
+    // Avisos
+
+    <string name="avisos_titulo">Warnungen</string>
+
+
+    // API Calendario Semanas
+    <string name="seg">Mon</string>
+    <string name="ter">Die</string>
+    <string name="qua">Mit</string>
+    <string name="qui">Don</string>
+    <string name="sex">Fre</string>
+    <string name="sab">Sam</string>
+    <string name="dom">Son</string>
+
+
+    // Menu Sair Usuário
+    <string name="sair_sim">Ja</string>
+    <string name="sair_nao">Nein</string>
+    <string name="sair_titulo">Bist du sicher, dass du gehen willst?</string>
+
+
+    <string name="tit_agendar">        Zeitplan </string>
+    <string name="tit_avisos">         Warnungen </string>
+    <string name="tit_historico">      Geschichte </string>
+    <string name="tit_sair">           Leave </string>
+    <string name="tit_monitoramento">  Überwachung </string>
+    <string name="tit_validacao">      Validierungen </string>
+    <string name="tit_consulta">       Beratungen </string>
+    <string name="tit_criar_avisos">   Erstellen Hinweise </string>
+    <string name="tit_qr_code">        QR Code </string>
+
+
+
+    <string name="desc_agendar">Wählen Sie den besten Tag für Sie!</string>
+    <string name="desc_avisos">Wandanwendung Aufforderungen.</string>
+    <string name="desc_historico"> Sehen Sie ihre Zeitpläne.</string>
+    <string name="desc_sair">Wollen Sie die Anwendung beenden?</string>
+    <string name="desc_monitoramento">Monitor Einweisungen.</string>
+    <string name="desc_validacao">Validierungen Krankenschwestern.</string>
+    <string name="desc_consultas"> Sehen Sie, wen Sie Ihre Patienten!</string>
+    <string name="desc_criar_avisos">Geben Sie Warnungen für die Patienten.</string>
+    <string name="desc_validacao_enfermeira">Validierungen Patienten.</string>
+    <string name="desc_qr_code">Überprüfen Sie die BPM des Patienten.</string>
+
+
+    <string name="titulo_monitorar">Überwachung</string>
+    <string name="titulo_validar">  Bestätigung</string>
+    <string name="titulo_avisos">   Meine Hinweise</string>
+    <string name="titulo_consultas">Beratungen</string>
+
+    <string name="erro_data">Bitte geben Sie ein gültiges Datum!   </string>
+
+    <string name="tit_add_agendamento">Abfragedaten</string>
+    <string name="des_add_agendamento">Wir brauchen Zeit, und dann das Datum an.</string>
+    <string name="hint_horario">Zeitplan</string>
+    <string name="hint_data">   Datum</string>
+
+    <string name="validacao_senha">Das Passwort muss mindestens 8 Zeichen lang sein. </string>
+    <string name="validacao_email">Bitte geben Sie eine gültige E-Mail. </string>
+    <string name="validacao_documento">Sozialversicherungsnummer (Registrierung von Personen) ungültig oder leer! </string>
+    <string name="validacao_nome">Ungültiger Name. Bitte geben Sie Ihren vollständigen Namen ein. </string>
+    <string name="categoria">     Wählen Sie eine Kategorie </string>
+    <string name="tit_medico">    Arzt </string>
+    <string name="tit_account">   Rechnung </string>
+
+    <string name="tit_perfil">   Benutzerprofil  </string>
+    <string name="desc_perfil">  Ändern Sie einige Ihrer Einstellungen  </string>
+    <string name="alterar_senha">Kennwort ändern  </string>
+    <string name="alterar_dados">Daten aktualisieren  </string>
+    <string name="antiga_senha"> Altes Passwort  </string>
+    <string name="nova_senha">   Neues Passwort  </string>
+    <string name="alterar">      Veränderung  </string>
+    <string name="configuracoes">Einstellungen  </string>
+    <string name="desc_account"> Ändern Sie Ihre Daten ein.  </string>
+    <string name="prontuario">   Zusammenfassung Medical Record  </string>
+    <string name="historico_bpm">BPM Geschichte  </string>
+    <string name="tit_bpm">      BPM Geschichte  </string>
+    <string name="tit_listar_prontuario"> Aufzeichnungen  </string>
+    <string name="desc_listar_prontuario">Überprüfen Sie alle Datensätze.  </string>
+    <string name="tit_data">          Datum  </string>
+    <string name="tit_status">        Status  </string>
+    <string name="status_agendamento">Geplant  </string>
+    <string name="desc_bpm">          Siehe BPM Geschichte der Patienten  </string>
+
+
+</resources>
