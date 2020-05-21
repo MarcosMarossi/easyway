@@ -19,27 +19,11 @@ import retrofit2.http.Path;
 
 public interface DataService {
 
-    @POST("auth/jwt/login")
-    Call<User> acessApp(@Body User token);
-
-
-    @GET("auth/jwt/me")
-    Call<User> getToken(@Header("x-access-token") String Token);
-
-    @POST("auth/jwt/resetpassword")
-    Call<User> resetEmail(@Body User email);
-
-
-    @POST("auth/jwt/register")
-    Call<User> registerNewUser(@Body User register);
-
-    // Records
-
     @POST("api/screcord/")
     Call<Scheduling> newSchedule(@Body Scheduling scheduling);
 
-    @GET("api/screcord/schedullingsByDates/{month}/{year}")
-    Call<ArraySchedule> historicPatient(@Path( "month" ) String month, @Path( "year" ) String year);
+    @GET("api/screcord/schedullingsByDate/5ec5c8ed66d2340007af6fae/{month}/{year}")
+    Call<ArraySchedule> historicPatient(@Path( "month" ) int month, @Path( "year" ) int year);
 
     @GET("api/doctors/showBySpecialty/{speciality}")
     Call<Result> getDoctors(@Path( "speciality") String speciality);

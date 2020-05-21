@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.emr.CountryItem;
+
 import com.example.emr.R;
 
 import java.util.ArrayList;

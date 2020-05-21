@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.emr.R;
-import com.example.emr.PasswordActivity;
+import com.example.emr.*;
 
 public class DetailsAcount extends AppCompatActivity {
 

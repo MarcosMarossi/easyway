@@ -24,12 +24,6 @@ public class DataCustom {
         int meshoje = Integer.parseInt( smonth );
         int anohoje = Integer.parseInt( syear );
 
-        if(dia > diahoje && mes >= meshoje && ano >= anohoje){
-            return dia + "/" + mes + "/" + ano;
-        } else {
-            return "0";
-        }
-
-
+        return dia + "/" + mes + "/" + ano;
     }
 }

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,8 +13,10 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 
 import com.example.emr.adapter.AdapterCountry;
+import com.example.emr.adapter.CountryItem;
 import com.example.emr.configuration.RetrofitConfig;
 import com.example.emr.model.User;
+import com.example.emr.service.Authentication;
 import com.example.emr.service.DataService;
 
 import java.util.ArrayList;
@@ -75,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initList() {
         countryList = new ArrayList<>();
-        countryList.add(new CountryItem("PT-BR", R.drawable.brazil));
-        countryList.add(new CountryItem("USA", R.drawable.usa3));
+        countryList.add(new CountryItem("pt-BR", R.drawable.brazil));
+        countryList.add(new CountryItem("en-US", R.drawable.usa3));
     }
 
     public void abrirTelaLogin(View v) {
@@ -163,8 +164,8 @@ public class MainActivity extends AppCompatActivity {
         getToken = sharedPreferences.getString("token", null);
         editor = sharedPreferences.edit();
 
-        DataService service = retrofit.create(DataService.class);
-        Call<User> call = service.getToken(getToken);
+        Authentication authentication = retrofit.create(Authentication.class);
+        Call<User> call = authentication.getToken(getToken);
 
         call.enqueue(new Callback<User>() {
 

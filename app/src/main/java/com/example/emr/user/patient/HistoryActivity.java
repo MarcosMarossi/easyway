@@ -19,6 +19,7 @@ import com.example.emr.configuration.RetrofitConfig;
 import com.example.emr.model.Scheduling;
 import com.example.emr.model.json.ArraySchedule;
 import com.example.emr.R;
+import com.example.emr.model.json.Schedule;
 import com.example.emr.service.DataService;
 import com.example.emr.user.patient.schedule.RecordUserActivity;
 import com.example.emr.user.patient.schedule.Slide01Activity;
@@ -40,7 +41,7 @@ public class HistoryActivity extends AppCompatActivity {
     private FloatingActionButton fabAgendar;
     private Retrofit retrofit;
     private ArraySchedule arraySchedule;
-    private String mesSelecionado, anoSelecionado, idSchedule, status;
+    private String mesSelecionado, anoSelecionado, idPatient, status;
     private DataService service;
     private RecyclerView recyclerView;
     private List<Scheduling> fotodope = new ArrayList<>(  );
@@ -58,12 +59,12 @@ public class HistoryActivity extends AppCompatActivity {
 
         recyclerView = findViewById( R.id.recycler );
         fabAgendar = findViewById(R.id.fabAgendar);
-        idSchedule = sharedPreferences.getString("idSchedule", null);
+        idPatient = sharedPreferences.getString("idPatient", null);
 
         calendario = findViewById(R.id.calHistorico);
         calendario.state().edit()
-                .setMaximumDate(CalendarDay.from(2019,1,1))
-                .setMaximumDate(CalendarDay.from(2020,6,1))
+                .setMaximumDate(CalendarDay.from(2020,1,1))
+                .setMaximumDate(CalendarDay.from(2020,12,30))
                 .commit();
 
         CalendarDay calendarDay = calendario.getCurrentDate();
@@ -95,19 +96,19 @@ public class HistoryActivity extends AppCompatActivity {
 
     public void getItems(){
 
+        Toast.makeText(this, "data" + mesSelecionado + anoSelecionado, Toast.LENGTH_SHORT).show();
+
         retrofit = RetrofitConfig.retrofitConfig();
         service = retrofit.create( DataService.class);
-        Call<ArraySchedule> call = service.historicPatient(mesSelecionado,anoSelecionado);
+        Call<ArraySchedule> call = service.historicPatient(Integer.parseInt(mesSelecionado),Integer.parseInt(anoSelecionado));
 
         call.enqueue( new Callback<ArraySchedule>() {
             @Override
             public void onResponse(Call<ArraySchedule> call, Response<ArraySchedule>response) {
                 arraySchedule = response.body();
                 fotodope = arraySchedule.schedules;
-                for(int i = 0; i < fotodope.size();i++){
-                    System.out.println( fotodope.get( i ).getPatient() );
-                }
-                recyclerView();
+
+                recyclerView(fotodope);
             }
 
             @Override
@@ -117,7 +118,7 @@ public class HistoryActivity extends AppCompatActivity {
         });
     }
 
-    public void recyclerView() {
+    public void recyclerView(List<Scheduling> list) {
 
         scheduleAdapter = new ScheduleAdapter(fotodope, this);
         recyclerView.setHasFixedSize( true );
@@ -134,9 +135,9 @@ public class HistoryActivity extends AppCompatActivity {
                                 scheduleAdapter.notifyDataSetChanged();
 
                                 Scheduling scheduling = fotodope.get(position);
-                                idSchedule = scheduling.get_id();
+                                idPatient = scheduling.get_id();
                                 status = scheduling.getStatus();
-                                editor.putString( "idRecord", idSchedule );
+                                editor.putString( "idRecord", idPatient);
                                 editor.commit();
 
                                 if (status.equals( "Agendado" )){
@@ -206,12 +207,12 @@ public class HistoryActivity extends AppCompatActivity {
                     scheduleAdapter.notifyDataSetChanged();
                 } else {
 
-                    idSchedule = schedule.get_id();
+                    idPatient = schedule.get_id();
                     scheduleAdapter.notifyItemRemoved(pos);
 
                     retrofit = RetrofitConfig.retrofitConfig();
                     DataService service =  retrofit.create( DataService.class );
-                    Call<ArraySchedule> call =  service.deleteSchedule( idSchedule );
+                    Call<ArraySchedule> call =  service.deleteSchedule(idPatient);
 
                     call.enqueue( new Callback<ArraySchedule>() {
                         @Override

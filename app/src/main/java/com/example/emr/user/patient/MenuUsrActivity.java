@@ -3,6 +3,7 @@ package com.example.emr.user.patient;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.emr.adapter.MenuAdapter;
-import com.example.emr.LoginActivity;
+import com.example.emr.*;
 import com.example.emr.model.User;
 import com.example.emr.R;
 import com.example.emr.user.patient.schedule.Slide01Activity;

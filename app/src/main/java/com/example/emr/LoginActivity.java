@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.emr.configuration.RetrofitConfig;
 import com.example.emr.model.User;
+import com.example.emr.service.Authentication;
 import com.example.emr.service.DataService;
 import com.example.emr.user.doctor.MenuDocActivity;
 import com.example.emr.user.patient.MenuUsrActivity;
@@ -79,8 +80,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 User token = new User( email, senha );
 
-                DataService service = retrofit.create( DataService.class );
-                Call<User> POST = service.acessApp( token );
+                Authentication authentication = retrofit.create( Authentication.class );
+                Call<User> POST = authentication.acessApp( token );
 
                 POST.enqueue( new Callback<User>() {
                     @Override
@@ -100,8 +101,9 @@ public class LoginActivity extends AppCompatActivity {
 
                         if (user.getToken() != null) {
 
-                            DataService service = retrofit.create( DataService.class );
-                            Call<User> GET = service.getToken( getToken );
+                            Authentication authentication = retrofit.create( Authentication.class );
+                            Call<User> GET = authentication.getToken( getToken );
+
                             GET.enqueue( new Callback<User>() {
                                 @Override
                                 public void onResponse(Call<User> call, Response<User> response) {
@@ -116,6 +118,7 @@ public class LoginActivity extends AppCompatActivity {
                                         editor.putString( "user_name", name);
                                         editor.putString( "user_email", email);
                                         editor.putString( "document", cpf);
+                                        editor.putString("idPatient",id);
                                         editor.putString("id",id);
                                         editor.commit();
 

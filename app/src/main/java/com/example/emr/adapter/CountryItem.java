@@ -1,4 +1,4 @@
-package com.example.emr;
+package com.example.emr.adapter;
 
 public class CountryItem {
 
