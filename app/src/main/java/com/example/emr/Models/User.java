@@ -16,8 +16,6 @@ public class User {
     private String newpassword;
     private String renewpassword;
 
-
-
     public String getNewpassword() {
         return newpassword;
     }

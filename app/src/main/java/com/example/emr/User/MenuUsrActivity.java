@@ -35,9 +35,6 @@ public class MenuUsrActivity extends AppCompatActivity {
     private TextView txtWelcome;
     private MenuAdapter menuAdapter;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,10 +51,9 @@ public class MenuUsrActivity extends AppCompatActivity {
                 {string.tit_agendar, string.desc_agendar},
                 {string.tit_account, string.desc_account},
                 {string.tit_historico, string.desc_historico},
-                {string.tit_bpm,string.historico_bpm},
                 {string.tit_sair, string.desc_sair}};
 
-        int[] dadosImg = {drawable.nurse, R.drawable.boy ,drawable.report,drawable.monitoring ,drawable.arrow};
+        int[] dadosImg = {drawable.nurse, R.drawable.boy ,drawable.report, drawable.arrow};
 
         recyclerView = findViewById( id.recyclerView );
         menuAdapter = new MenuAdapter(getApplication(),dados,dadosImg);
@@ -83,9 +79,6 @@ public class MenuUsrActivity extends AppCompatActivity {
                                         startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
                                         break;
                                     case 3:
-                                        startActivity(new Intent(getApplicationContext(),LogActivity.class));
-                                        break;
-                                    case 4:
                                         fechar();
                                         break;
                                     default:

@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import com.example.emr.Doctor.MenuDocActivity;
-import com.example.emr.Nurse.MenuNurActivity;
 import com.example.emr.User.MenuUsrActivity;
 
 import retrofit2.Call;
@@ -49,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().setStatusBarColor( Color.parseColor( "#E53935" ));
 
-
-
         initList();
         idioma = findViewById(R.id.spinIdioma);
 
@@ -66,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 CountryItem clickedItem = (CountryItem) parent.getItemAtPosition(position);
                 String clickedCountryName = clickedItem.getCountryName().toLowerCase();
-                // Toast.makeText(MainActivity.this, clickedCountryName + " selected", Toast.LENGTH_LONG).show();
                 alteraridioma(clickedCountryName);
             }
 
@@ -81,11 +77,6 @@ public class MainActivity extends AppCompatActivity {
         countryList = new ArrayList<>();
         countryList.add(new CountryItem("PT-BR", R.drawable.brazil));
         countryList.add(new CountryItem("USA", R.drawable.usa3));
-        countryList.add(new CountryItem("ES", R.drawable.spain));
-        countryList.add(new CountryItem("FR", R.drawable.french));
-        countryList.add(new CountryItem("ALE", R.drawable.germany));
-        countryList.add(new CountryItem("HU", R.drawable.hungary));
-
     }
 
     public void abrirTelaLogin(View v) {
@@ -119,8 +110,6 @@ public class MainActivity extends AppCompatActivity {
             locale = new Locale("pt");
         else if(idioma.equals("usa"))
             locale = new Locale("en");
-        else if(idioma.equals("ale"))
-            locale = new Locale("de");
         else
             locale = new Locale(idioma);
 
@@ -153,15 +142,6 @@ public class MainActivity extends AppCompatActivity {
                 return 0;
             case "en":
                 return 1;
-            case "es":
-                return 2;
-            case "fr":
-                return 3;
-            case "de":
-                return 4;
-            case "hu":
-                return 5;
-
         }
         return 1;
     }
@@ -173,11 +153,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void menuMedico() {
         Intent intent = new Intent(this, MenuDocActivity.class);
-        startActivity(intent);
-    }
-
-    public void menuEnfermeira() {
-        Intent intent = new Intent(this, MenuNurActivity.class);
         startActivity(intent);
     }
 
@@ -212,8 +187,6 @@ public class MainActivity extends AppCompatActivity {
                         menuPaciente();
                     } else if (Profile.equals("medic") && !getToken.equals("")) {
                         menuMedico();
-                    } else if (Profile.equals("nurse") && !getToken.equals("")) {
-                        menuEnfermeira();
                     }
                 }
             }

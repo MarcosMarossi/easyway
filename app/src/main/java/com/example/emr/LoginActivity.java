@@ -16,7 +16,6 @@ import com.example.emr.Config.RetrofitConfig;
 import com.example.emr.Models.User;
 import com.example.emr.Services.DataService;
 import com.example.emr.Doctor.MenuDocActivity;
-import com.example.emr.Nurse.MenuNurActivity;
 import com.example.emr.User.MenuUsrActivity;
 
 
@@ -124,8 +123,6 @@ public class LoginActivity extends AppCompatActivity {
                                             menuMedico();
                                         } else if (Profile.equals( "patient" )) {
                                             menuPaciente();
-                                        } else if (Profile.equals( "nurse" )) {
-                                            menuEnfermeira();
                                         }
                                     }
                                 }
@@ -167,9 +164,5 @@ public class LoginActivity extends AppCompatActivity {
 
     public void menuMedico() {
         startActivity(new Intent(this, MenuDocActivity.class));
-    }
-
-    public void menuEnfermeira() {
-        startActivity(new Intent(this, MenuNurActivity.class));
     }
 }

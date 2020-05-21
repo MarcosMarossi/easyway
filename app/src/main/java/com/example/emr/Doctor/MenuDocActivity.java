@@ -63,9 +63,6 @@ public class MenuDocActivity extends AppCompatActivity {
                                         monitoramento();
                                         break;
                                     case 2:
-                                        consultarBPM();
-                                        break;
-                                    case 3:
                                         fechar();
                                         break;
                                     default:
@@ -98,13 +95,6 @@ public class MenuDocActivity extends AppCompatActivity {
 
     }
 
-    public void consultarBPM(){
-        Intent intent = new Intent(MenuDocActivity.this,Act_Patient_BPM.class);
-        startActivity(intent);
-
-    }
-
-
     public void fechar(){
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
@@ -136,4 +126,3 @@ public class MenuDocActivity extends AppCompatActivity {
 
     }
 }
-

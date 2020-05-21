@@ -40,8 +40,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
         holder.descricao.setText(dados[i][1]);
         holder.imagem.setImageResource(dadosImg[i]);
         holder.imagem.setTag(i);
-
-
     }
 
     @Override
@@ -61,7 +59,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
             titulo = itemView.findViewById( R.id.txtTitulo1 );
             descricao = itemView.findViewById(R.id.txtDescricao1 );
             imagem = itemView.findViewById(R.id.imgMenu );
-
         }
     }
 }
