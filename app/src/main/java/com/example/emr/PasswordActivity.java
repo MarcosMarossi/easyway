@@ -50,8 +50,6 @@ public class PasswordActivity extends AppCompatActivity {
                 startActivity( new Intent( getApplicationContext(), HistoryActivity.class ) );
             }
         } );
-
-
     }
 
     public void alterar(View view){

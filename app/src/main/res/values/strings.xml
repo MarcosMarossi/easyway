@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name" translatable="false">Vida Saudável</string>
+    <string name="app_name" translatable="false">EasyWay</string>
     <string name="titulo_login">Acessar conta</string>
     <string name="titulo_cadastrar">Cadastrar conta</string>
 
     //Nome_Título
-    <string name="nome">Vida Saudável</string>
+    <string name="nome">EasyWay</string>
 
     //Textos_MainActivity
-    <string name="explicacao_app">Bem-vindo(a) ao Vida Saudável, o seu novo aplicativo de acompanhamento médico.</string>
+    <string name="explicacao_app">Bem-vindo(a) ao EasyWay, o seu novo aplicativo de acompanhamento médico.</string>
     <string name="btnEntrar">Entrar</string>
     <string name="btnCadastrar">Cadastrar</string>
     <string name="Idioma">Idioma</string>

@@ -30,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.act_register);
 
         getSupportActionBar().hide();
-        getWindow().setStatusBarColor( Color.parseColor( "#4CAF50" ));
+        getWindow().setStatusBarColor( Color.parseColor( "#304FFE" ));
 
         etName = findViewById(R.id.edtNome);
         etCPF = findViewById(R.id.edtCPF);

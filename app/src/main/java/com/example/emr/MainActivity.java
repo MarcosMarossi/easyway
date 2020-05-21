@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         mudarIdioma();
         setContentView(R.layout.act_main);
 
-        getWindow().setStatusBarColor( Color.parseColor( "#E53935" ));
+        //getWindow().setStatusBarColor( Color.parseColor( "#E53935" ));
 
         initList();
         idioma = findViewById(R.id.spinIdioma);
