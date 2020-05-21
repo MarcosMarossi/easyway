@@ -12,11 +12,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.emr.Config.RetrofitConfig;
-import com.example.emr.Models.User;
-import com.example.emr.Services.DataService;
-import com.example.emr.Doctor.MenuDocActivity;
-import com.example.emr.User.MenuUsrActivity;
+import com.example.emr.configuration.RetrofitConfig;
+import com.example.emr.model.User;
+import com.example.emr.service.DataService;
+import com.example.emr.user.doctor.MenuDocActivity;
+import com.example.emr.user.patient.MenuUsrActivity;
 
 
 import retrofit2.Call;

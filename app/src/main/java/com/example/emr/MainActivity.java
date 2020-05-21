@@ -13,16 +13,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 
-import com.example.emr.Adapter.AdapterCountry;
-import com.example.emr.Config.RetrofitConfig;
-import com.example.emr.Models.User;
-import com.example.emr.Services.DataService;
+import com.example.emr.adapter.AdapterCountry;
+import com.example.emr.configuration.RetrofitConfig;
+import com.example.emr.model.User;
+import com.example.emr.service.DataService;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
-import com.example.emr.Doctor.MenuDocActivity;
-import com.example.emr.User.MenuUsrActivity;
+import com.example.emr.user.doctor.MenuDocActivity;
+import com.example.emr.user.patient.MenuUsrActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
