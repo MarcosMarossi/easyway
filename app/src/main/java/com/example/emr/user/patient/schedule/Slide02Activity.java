@@ -21,7 +21,7 @@ import com.example.emr.model.json.Result;
 import com.example.emr.model.Scheduling;
 import com.example.emr.model.User;
 import com.example.emr.R;
-import com.example.emr.service.DataService;
+import com.example.emr.service.Patient;
 import com.example.emr.user.patient.HistoryActivity;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
@@ -142,7 +142,7 @@ public class Slide02Activity extends AppCompatActivity {
                 Scheduling schedule = new Scheduling(id, nameCategory, nameDoctor, dataFormat, "Agendado");
 
                 retrofit = RetrofitConfig.retrofitConfig();
-                DataService service1 = retrofit.create(DataService.class);
+                Patient service1 = retrofit.create(Patient.class);
                 Call<Scheduling> chm = service1.newSchedule(schedule);
                 chm.enqueue(new Callback<Scheduling>() {
                     @Override
@@ -170,7 +170,7 @@ public class Slide02Activity extends AppCompatActivity {
 
     public void callRetrofit() {
         retrofit = RetrofitConfig.retrofitConfig();
-        DataService service = retrofit.create(DataService.class);
+        Patient service = retrofit.create(Patient.class);
 
         Call<Result> call = service.getDoctors(nameCategory);
         call.enqueue(new Callback<Result>() {

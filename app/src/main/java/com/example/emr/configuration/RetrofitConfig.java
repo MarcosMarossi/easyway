@@ -1,7 +1,7 @@
 package com.example.emr.configuration;
 
 
-import com.example.emr.service.DataService;
+import com.example.emr.service.Patient;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitConfig {
 
     private static String stringURL = "https://ey7li2szf0.execute-api.us-east-1.amazonaws.com/dev/";
-    private static DataService service;
+    private static Patient service;
     private static Retrofit retrofit;
     public static Retrofit retrofitConfig(){
 

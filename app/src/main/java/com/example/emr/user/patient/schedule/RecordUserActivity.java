@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.example.emr.configuration.RetrofitConfig;
 import com.example.emr.model.json.Schedule;
 import com.example.emr.R;
-import com.example.emr.service.DataService;
+import com.example.emr.service.Patient;
 import com.example.emr.user.patient.HistoryActivity;
 
 import retrofit2.Call;
@@ -52,7 +52,7 @@ public class RecordUserActivity extends AppCompatActivity {
 
         retrofit = RetrofitConfig.retrofitConfig();
 
-        DataService service = retrofit.create( DataService.class );
+        Patient service = retrofit.create( Patient.class );
         Call<Schedule> call = service.scheduleById( idSchedule );
 
         call.enqueue( new Callback<Schedule>() {

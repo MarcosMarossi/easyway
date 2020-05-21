@@ -19,8 +19,7 @@ import com.example.emr.configuration.RetrofitConfig;
 import com.example.emr.model.Scheduling;
 import com.example.emr.model.json.ArraySchedule;
 import com.example.emr.R;
-import com.example.emr.model.json.Schedule;
-import com.example.emr.service.DataService;
+import com.example.emr.service.Patient;
 import com.example.emr.user.patient.schedule.RecordUserActivity;
 import com.example.emr.user.patient.schedule.Slide01Activity;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -42,7 +41,7 @@ public class HistoryActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private ArraySchedule arraySchedule;
     private String mesSelecionado, anoSelecionado, idPatient, status;
-    private DataService service;
+    private Patient service;
     private RecyclerView recyclerView;
     private List<Scheduling> fotodope = new ArrayList<>(  );
     private ScheduleAdapter scheduleAdapter;
@@ -99,7 +98,7 @@ public class HistoryActivity extends AppCompatActivity {
         Toast.makeText(this, "data" + mesSelecionado + anoSelecionado, Toast.LENGTH_SHORT).show();
 
         retrofit = RetrofitConfig.retrofitConfig();
-        service = retrofit.create( DataService.class);
+        service = retrofit.create( Patient.class);
         Call<ArraySchedule> call = service.historicPatient(Integer.parseInt(mesSelecionado),Integer.parseInt(anoSelecionado));
 
         call.enqueue( new Callback<ArraySchedule>() {
@@ -211,7 +210,7 @@ public class HistoryActivity extends AppCompatActivity {
                     scheduleAdapter.notifyItemRemoved(pos);
 
                     retrofit = RetrofitConfig.retrofitConfig();
-                    DataService service =  retrofit.create( DataService.class );
+                    Patient service =  retrofit.create( Patient.class );
                     Call<ArraySchedule> call =  service.deleteSchedule(idPatient);
 
                     call.enqueue( new Callback<ArraySchedule>() {

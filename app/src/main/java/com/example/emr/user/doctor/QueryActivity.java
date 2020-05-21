@@ -16,7 +16,7 @@ import com.example.emr.model.Scheduling;
 import com.example.emr.model.json.ArraySchedule;
 import com.example.emr.model.User;
 import com.example.emr.R;
-import com.example.emr.service.DataService;
+import com.example.emr.service.Patient;
 import com.example.emr.user.patient.RecyclerItemClickListener;
 
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class QueryActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private ArraySchedule arraySchedule;
     private String mesSelecionado, anoSelecionado, nameMedic;
-    private DataService service;
+    private Patient service;
     private RecyclerView recyclerView;
     private List<Scheduling> fotodope = new ArrayList<>(  );
     private List<User> fotodamao = new ArrayList<>(  );
@@ -60,7 +60,7 @@ public class QueryActivity extends AppCompatActivity {
         Toast.makeText( this, "efeewfewfwre", Toast.LENGTH_SHORT ).show();
 
         retrofit = RetrofitConfig.retrofitConfig();
-        service = retrofit.create( DataService.class);
+        service = retrofit.create( Patient.class);
         Call<Schedules> call = service.scheduleByName("Roberto Raul Oliveira");
 
         call.enqueue( new Callback<Schedules>() {

@@ -17,7 +17,6 @@ import com.example.emr.adapter.CountryItem;
 import com.example.emr.configuration.RetrofitConfig;
 import com.example.emr.model.User;
 import com.example.emr.service.Authentication;
-import com.example.emr.service.DataService;
 
 import java.util.ArrayList;
 import java.util.Locale;

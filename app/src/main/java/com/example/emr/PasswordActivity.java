@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.example.emr.configuration.RetrofitConfig;
 import com.example.emr.model.User;
-import com.example.emr.service.DataService;
+import com.example.emr.service.Patient;
 import com.example.emr.user.patient.HistoryActivity;
 
 import retrofit2.Call;
@@ -38,8 +38,6 @@ public class PasswordActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("salvarToken", MODE_PRIVATE);
 
-
-
         etOldPassword = findViewById( R.id.etOldPassword );
         etNewPassword = findViewById( R.id.etNewPassword );
         btAlterar = findViewById( R.id.btnAlterarSenha );
@@ -61,7 +59,7 @@ public class PasswordActivity extends AppCompatActivity {
         User change = new User( email, senha, NewPassword, OldPassword,0);
 
         retrofit = RetrofitConfig.retrofitConfig();
-        DataService service = retrofit.create( DataService.class );
+        Patient service = retrofit.create( Patient.class );
         Call<User> call = service.resetPassword( change );
 
         call.enqueue( new Callback<User>() {
@@ -73,13 +71,10 @@ public class PasswordActivity extends AppCompatActivity {
                 } else{
                     Toast.makeText( PasswordActivity.this, "Senhas não correspondem!", Toast.LENGTH_SHORT ).show();
                 }
-
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
-
-            }
+            public void onFailure(Call<User> call, Throwable t) { }
         } );
     }
 }

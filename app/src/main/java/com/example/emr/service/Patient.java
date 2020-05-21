@@ -17,7 +17,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Header;
 import retrofit2.http.Path;
 
-public interface DataService {
+public interface Patient {
 
     @POST("api/screcord/")
     Call<Scheduling> newSchedule(@Body Scheduling scheduling);
@@ -31,15 +31,6 @@ public interface DataService {
     @DELETE("api/screcord/{id}")
     Call<ArraySchedule> deleteSchedule(@Path("id") String id);
 
-    @GET("api/patients")
-    Call<ArrayList<User>> getAllPatients();
-
-    @POST("misc/heartbeat")
-    Call<User> setBPMUser(@Body User user);
-
-    @GET("api/heartbeatlog/{id}")
-    Call<ArrayList<User>> getLog(@Path("id") String id);
-
     @POST("auth/jwt/reset")
     Call<User> resetPassword(@Body User user);
 
@@ -47,12 +38,6 @@ public interface DataService {
     @GET("api/screcord/{id}")
     Call<Schedule> scheduleById(@Path( "id" ) String id);
 
-    @GET("api/patients/{id}")
-    Call<Schedules> patientById(@Path( "id" ) String id);
-
     @GET("api/screcord/showSchedullingsByMedicName/{medic}")
     Call<Schedules> scheduleByName(@Path( "medic" ) String medic);
-
-    @GET("api/patients/showByCPF/{cpf}")
-    Call<ArrayList<User>> getPatientCPF(@Path("cpf") String cpf);
 }

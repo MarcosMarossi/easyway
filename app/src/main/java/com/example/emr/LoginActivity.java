@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.example.emr.configuration.RetrofitConfig;
 import com.example.emr.model.User;
 import com.example.emr.service.Authentication;
-import com.example.emr.service.DataService;
 import com.example.emr.user.doctor.MenuDocActivity;
 import com.example.emr.user.patient.MenuUsrActivity;
 
@@ -71,7 +70,6 @@ public class LoginActivity extends AppCompatActivity {
         btEnviar.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 email = campoNome.getText().toString();
                 senha = campoSenha.getText().toString();

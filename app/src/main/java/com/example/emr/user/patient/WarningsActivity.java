@@ -9,7 +9,7 @@ import com.example.emr.adapter.ScheduleAdapter;
 import com.example.emr.model.Scheduling;
 import com.example.emr.model.json.ArraySchedule;
 import com.example.emr.R;
-import com.example.emr.service.DataService;
+import com.example.emr.service.Patient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class WarningsActivity extends AppCompatActivity {
 
     private Retrofit retrofit;
     private ArraySchedule arraySchedule;
-    private DataService service;
+    private Patient service;
     private RecyclerView recyclerView;
     private List<Scheduling> fotodope = new ArrayList<>(  );
     private ScheduleAdapter scheduleAdapter;
