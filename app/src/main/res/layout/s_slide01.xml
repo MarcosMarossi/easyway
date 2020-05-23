@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E53935"
-    android:backgroundTint="#FFFFFF"
+    android:backgroundTint="#00897b"
     tools:context=".user.SliderActivity">
 
 
@@ -13,11 +13,11 @@
         android:id="@+id/textView13"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/ubuntu"
         android:gravity="center"
         android:text="@string/tit_agendamento"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +36,7 @@
         android:gravity="center"
         android:text="Basta preencher as informações necessárias!"
         android:textAlignment="center"
-        android:textColor="#5A5A5A"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
@@ -45,13 +45,13 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="199dp"
-        android:layout_height="167dp"
-        android:layout_marginTop="130dp"
+        android:layout_width="202dp"
+        android:layout_height="295dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/calendar" />
+        app:srcCompat="@drawable/snellenchart" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabNext"

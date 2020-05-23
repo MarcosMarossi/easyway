@@ -15,22 +15,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".user.patient.RecordActivity"></activity>
+        <activity
+            android:name=".user.patient.schedule.DataActivity"
+            android:label="@string/senha"
+            android:parentActivityName=".user.patient.DetailsAcount"/>
         <activity android:name=".RepareActivity" />
         <activity
             android:name=".user.patient.schedule.RecordUserActivity"
             android:label="@string/prontuario"
-            android:parentActivityName=".user.patient.MenuUsrActivity" />
+            android:parentActivityName=".user.patient.menu.MenuUsrActivity" />
         <activity
-            android:name=".PasswordActivity"
+            android:name=".user.patient.PasswordActivity"
             android:label="@string/alterar_senha"
             android:parentActivityName=".user.patient.DetailsAcount" />
         <activity
             android:name=".user.patient.DetailsAcount"
             android:label="@string/configuracoes"
-            android:parentActivityName=".user.patient.MenuUsrActivity" />
-        <activity android:name=".user.patient.MenuUsrActivity" />
-        <activity android:name=".user.patient.RecordActivity" />
+            android:parentActivityName=".user.patient.menu.MenuUsrActivity" />
+        <activity android:name=".user.patient.menu.MenuUsrActivity" />
+        <activity
+            android:name=".user.patient.RecordActivity"
+            android:label="@string/titulo_prontuario"
+            android:parentActivityName=".user.patient.menu.MenuUsrActivity" />
         <activity
             android:name=".user.patient.schedule.Slide02Activity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -39,24 +45,20 @@
         <activity
             android:name=".user.doctor.ValidationActivity"
             android:label="@string/titulo_validar"
-            android:parentActivityName=".user.doctor.MenuDocActivity" />
+            android:parentActivityName=".user.doctor.menu.MenuDocActivity" />
         <activity
             android:name=".user.doctor.MonitoringActivity"
             android:label="@string/titulo_monitorar"
-            android:parentActivityName=".user.doctor.MenuDocActivity" />
+            android:parentActivityName=".user.doctor.menu.MenuDocActivity" />
         <activity
             android:name=".user.doctor.QueryActivity"
             android:label="@string/titulo_consultas"
-            android:parentActivityName=".user.doctor.MenuDocActivity" />
-        <activity android:name=".user.doctor.MenuDocActivity" />
-        <activity
-            android:name=".user.patient.WarningsActivity"
-            android:label="@string/avisos_titulo"
-            android:parentActivityName=".user.patient.MenuUsrActivity" />
+            android:parentActivityName=".user.doctor.menu.MenuDocActivity" />
+        <activity android:name=".user.doctor.menu.MenuDocActivity" />
         <activity
             android:name=".user.patient.HistoryActivity"
             android:label="@string/historico"
-            android:parentActivityName=".user.patient.MenuUsrActivity" />
+            android:parentActivityName=".user.patient.menu.MenuUsrActivity" />
         <activity
             android:name=".RegisterActivity"
             android:label="@string/titulo_cadastrar"

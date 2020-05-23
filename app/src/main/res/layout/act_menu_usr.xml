@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".user.patient.MenuUsrActivity">
+    tools:context=".user.patient.menu.MenuUsrActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"

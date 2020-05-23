@@ -15,8 +15,8 @@ import android.widget.Toast;
 import com.example.emr.configuration.RetrofitConfig;
 import com.example.emr.model.User;
 import com.example.emr.service.Authentication;
-import com.example.emr.user.doctor.MenuDocActivity;
-import com.example.emr.user.patient.MenuUsrActivity;
+import com.example.emr.user.doctor.menu.MenuDocActivity;
+import com.example.emr.user.patient.menu.MenuUsrActivity;
 
 
 import retrofit2.Call;

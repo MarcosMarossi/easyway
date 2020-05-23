@@ -22,8 +22,8 @@ import com.example.emr.service.Authentication;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import com.example.emr.user.doctor.MenuDocActivity;
-import com.example.emr.user.patient.MenuUsrActivity;
+import com.example.emr.user.doctor.menu.MenuDocActivity;
+import com.example.emr.user.patient.menu.MenuUsrActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.emr.R;
-import com.example.emr.user.patient.MenuUsrActivity;
+import com.example.emr.user.patient.menu.MenuUsrActivity;
 
 public class Slide01Activity extends AppCompatActivity {
 

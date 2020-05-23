@@ -1,4 +1,4 @@
-package com.example.emr.user.patient;
+package com.example.emr.user.patient.menu;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,8 +20,11 @@ import android.widget.Toast;
 
 import com.example.emr.adapter.MenuAdapter;
 import com.example.emr.*;
-import com.example.emr.model.User;
 import com.example.emr.R;
+import com.example.emr.helper.RecyclerItemClickListener;
+import com.example.emr.user.patient.DetailsAcount;
+import com.example.emr.user.patient.HistoryActivity;
+import com.example.emr.user.patient.RecordActivity;
 import com.example.emr.user.patient.schedule.Slide01Activity;
 
 import java.time.LocalDateTime;
@@ -29,7 +32,6 @@ import java.time.LocalDateTime;
 import static com.example.emr.R.*;
 
 public class MenuUsrActivity extends AppCompatActivity {
-
 
     private ListView listView;
     private RecyclerView recyclerView;

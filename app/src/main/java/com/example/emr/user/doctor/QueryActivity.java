@@ -17,7 +17,7 @@ import com.example.emr.model.json.ArraySchedule;
 import com.example.emr.model.User;
 import com.example.emr.R;
 import com.example.emr.service.Patient;
-import com.example.emr.user.patient.RecyclerItemClickListener;
+import com.example.emr.helper.RecyclerItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.emr.user.doctor;
+package com.example.emr.user.doctor.menu;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,7 +16,9 @@ import com.example.emr.adapter.MenuAdapter;
 import com.example.emr.*;
 import com.example.emr.model.User;
 import com.example.emr.R;
-import com.example.emr.user.patient.RecyclerItemClickListener;
+import com.example.emr.helper.RecyclerItemClickListener;
+import com.example.emr.user.doctor.MonitoringActivity;
+import com.example.emr.user.doctor.QueryActivity;
 
 public class MenuDocActivity extends AppCompatActivity {
 

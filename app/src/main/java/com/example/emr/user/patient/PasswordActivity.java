@@ -1,4 +1,4 @@
-package com.example.emr;
+package com.example.emr.user.patient;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,10 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.emr.R;
 import com.example.emr.configuration.RetrofitConfig;
 import com.example.emr.model.User;
 import com.example.emr.service.Patient;
-import com.example.emr.user.patient.HistoryActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,7 +40,7 @@ public class PasswordActivity extends AppCompatActivity {
 
         etOldPassword = findViewById( R.id.etOldPassword );
         etNewPassword = findViewById( R.id.etNewPassword );
-        btAlterar = findViewById( R.id.btnAlterarSenha );
+        btAlterar = findViewById( R.id.btnChangePassword);
 
         btnSair.setOnClickListener( new View.OnClickListener() {
             @Override

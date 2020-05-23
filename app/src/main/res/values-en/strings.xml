@@ -45,14 +45,9 @@
     <string name="tit_final_agendamento">Very little is missing! Fill in the last data to schedule your appointment</string>
 
 
-    <!--<string-array name="consultorios">
-        <item>Select a doctor\'s office</item>
-        <item>HAOC Indaiatuba</item>
-        <item>Unimed Campinas</item>
-        <item>Unimed Monte Mor</item>
-        <item>Santa Casa Itu</item>
-        <item>Santa Casa Salto</item>
-    </string-array>-->
+    // Menu Usuário
+    <string name="titulo_prontuario">Record</string>
+    <string name="resumo_prontuario">Access your record.</string>
 
     <string-array name="idioma">
         <item>PT-BR</item>

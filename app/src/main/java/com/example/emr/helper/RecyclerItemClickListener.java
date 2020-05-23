@@ -1,4 +1,4 @@
-package com.example.emr.user.patient;
+package com.example.emr.helper;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
