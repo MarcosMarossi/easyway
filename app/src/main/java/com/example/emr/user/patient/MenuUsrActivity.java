@@ -3,7 +3,8 @@ package com.example.emr.user.patient;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.design.widget.BottomNavigationView;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,44 +24,52 @@ import com.example.emr.model.User;
 import com.example.emr.R;
 import com.example.emr.user.patient.schedule.Slide01Activity;
 
+import java.time.LocalDateTime;
+
 import static com.example.emr.R.*;
 
 public class MenuUsrActivity extends AppCompatActivity {
 
 
-    private ListView lista;
+    private ListView listView;
     private RecyclerView recyclerView;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private String name;
-    private TextView txtWelcome;
+    private TextView txtNameUser, txtCurrentDate;
     private MenuAdapter menuAdapter;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(layout.act_menu_usr );
-        //getSupportActionBar().hide();
+        setContentView(layout.act_menu_usr);
 
         sharedPreferences = getSharedPreferences("salvarToken", MODE_PRIVATE);
         editor = sharedPreferences.edit();
+        name = sharedPreferences.getString("user_name", null);
 
-        //name = sharedPreferences.getString("name", null);
-        //txtWelcome = findViewById( id.txtWelcome );
+        getSupportActionBar().setElevation(0);
+
+        txtNameUser = findViewById(id.txtNameUser);
+        txtCurrentDate = findViewById(id.txtCurrentDate);
+        txtNameUser.setText("Bem vindo(a), " + name);
+        txtCurrentDate.setText(LocalDateTime.now().toString());
 
         int[][] dados = {
                 {string.tit_agendar, string.desc_agendar},
-                {string.tit_account, string.desc_account},
                 {string.tit_historico, string.desc_historico},
-                {string.tit_sair, string.desc_sair}};
+                {string.titulo_prontuario, string.resumo_prontuario},
+                {string.tit_account, string.desc_account}};
 
-        int[] dadosImg = {drawable.nurse, R.drawable.boy ,drawable.report, drawable.arrow};
 
-        recyclerView = findViewById( id.recyclerView );
-        menuAdapter = new MenuAdapter(getApplication(),dados,dadosImg);
-        recyclerView.setHasFixedSize( true );
+        int[] dadosImg = {drawable.snellenchart, drawable.healthcareandmedical, drawable.medicalreport, drawable.answer};
+
+        recyclerView = findViewById(id.recyclerView);
+        menuAdapter = new MenuAdapter(getApplication(), dados, dadosImg);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter( menuAdapter );
+        recyclerView.setAdapter(menuAdapter);
 
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(
@@ -74,13 +83,14 @@ public class MenuUsrActivity extends AppCompatActivity {
                                         startActivity(new Intent(getApplicationContext(), Slide01Activity.class));
                                         break;
                                     case 1:
-                                        startActivity(new Intent(getApplicationContext(), DetailsAcount.class));
+                                        startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
+
                                         break;
                                     case 2:
-                                        startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
+                                        startActivity(new Intent(getApplicationContext(), RecordActivity.class));
                                         break;
                                     case 3:
-                                        fechar();
+                                        startActivity(new Intent(getApplicationContext(), DetailsAcount.class));
                                         break;
                                     default:
                                         Toast.makeText(MenuUsrActivity.this, "Não foi possível", Toast.LENGTH_SHORT).show();
@@ -101,48 +111,46 @@ public class MenuUsrActivity extends AppCompatActivity {
         );
     }
 
-    private void fechar() {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setTitle(string.sair_titulo);
-        dialog.setIcon(drawable.ic_remove_circle_black_24dp);
-
-        dialog.setPositiveButton(string.sair_sim, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                User user = new User();
-                user.setToken("");
-                editor.putString("token",user.getToken());
-                editor.commit();
-                Intent intent = new Intent(MenuUsrActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        dialog.setNegativeButton(string.sair_nao, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-
-        dialog.create();
-        dialog.show();
-
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate( R.menu.toolbar,menu );
-        return super.onCreateOptionsMenu( menu );
+        getMenuInflater().inflate(R.menu.toolbar, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case id.MenuSair:
-                fechar();
+                AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+                dialog.setTitle(string.sair_titulo);
+                dialog.setIcon(drawable.ic_remove_circle_black_24dp);
+
+                dialog.setPositiveButton(string.sair_sim, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        editor.putString("token", null);
+                        editor.commit();
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                        finishAffinity();
+                    }
+                });
+
+                dialog.setNegativeButton(string.sair_nao, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                dialog.create();
+                dialog.show();
                 break;
         }
-        return super.onOptionsItemSelected( item );
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        this.moveTaskToBack(true);
     }
 }

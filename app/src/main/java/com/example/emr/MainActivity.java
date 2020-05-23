@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,7 +32,7 @@ import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Spinner idioma;
+    private Spinner language;
     private ArrayList<CountryItem> countryList;
     private AdapterCountry adapterCountry;
     private Retrofit retrofit;
@@ -46,19 +47,19 @@ public class MainActivity extends AppCompatActivity {
         mudarIdioma();
         setContentView(R.layout.act_main);
 
-        //getWindow().setStatusBarColor( Color.parseColor( "#E53935" ));
+        getWindow().setStatusBarColor( Color.parseColor( "#00897b" ));
 
         initList();
-        idioma = findViewById(R.id.spinIdioma);
+        language = findViewById(R.id.spinIdioma);
 
         adapterCountry = new AdapterCountry(this, countryList);
-        idioma.setAdapter(adapterCountry);
+        language.setAdapter(adapterCountry);
 
-        idioma.setSelected(false);
-        idioma.setSelection(getLanguage(), true);
+        language.setSelected(false);
+        language.setSelection(getLanguage(), true);
 
 
-        idioma.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        language.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 CountryItem clickedItem = (CountryItem) parent.getItemAtPosition(position);
@@ -113,8 +114,6 @@ public class MainActivity extends AppCompatActivity {
         else
             locale = new Locale(idioma);
 
-
-
         Locale.setDefault(locale);
 
         Context context = this;
@@ -136,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
     public int getLanguage(){
         SharedPreferences dados = getSharedPreferences("emr-language",MODE_PRIVATE);
         String result = dados.getString("idioma","");
-        // Toast.makeText(MainActivity.this,result+"",Toast.LENGTH_LONG).show();
         switch(result){
             case "pt":
                 return 0;
@@ -156,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openAutomatic(){
+    public void authentication(){
         retrofit = RetrofitConfig.retrofitConfig();
 
         sharedPreferences = getSharedPreferences("salvarToken", MODE_PRIVATE);
@@ -174,9 +172,7 @@ public class MainActivity extends AppCompatActivity {
 
                     Profile = response.body().getProfile();
                     String name = response.body().getName();
-                    editor.putString( "name", name);
                     String email = response.body().getEmail();
-                    editor.putString( "name", name);
                     String cpf = response.body().getCpf();
                     editor.putString( "user_name", name);
                     editor.putString( "user_email", email);
@@ -201,6 +197,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        openAutomatic();
+        authentication();
     }
 }

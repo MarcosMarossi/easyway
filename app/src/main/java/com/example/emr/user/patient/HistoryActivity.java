@@ -36,14 +36,14 @@ import retrofit2.Retrofit;
 
 public class HistoryActivity extends AppCompatActivity {
 
-    private MaterialCalendarView calendario;
-    private FloatingActionButton fabAgendar;
+    private MaterialCalendarView materialCalendarView;
+    private FloatingActionButton fabSchedule;
     private Retrofit retrofit;
     private ArraySchedule arraySchedule;
-    private String mesSelecionado, anoSelecionado, idPatient, status;
+    private String monthSelected, yearSelected, idPatient, status;
     private Patient service;
     private RecyclerView recyclerView;
-    private List<Scheduling> fotodope = new ArrayList<>(  );
+    private List<Scheduling> listSchedules = new ArrayList<>(  );
     private ScheduleAdapter scheduleAdapter;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
@@ -57,31 +57,31 @@ public class HistoryActivity extends AppCompatActivity {
         editor = sharedPreferences.edit();
 
         recyclerView = findViewById( R.id.recycler );
-        fabAgendar = findViewById(R.id.fabAgendar);
+        fabSchedule = findViewById(R.id.fabAgendar);
         idPatient = sharedPreferences.getString("idPatient", null);
 
-        calendario = findViewById(R.id.calHistorico);
-        calendario.state().edit()
+        materialCalendarView = findViewById(R.id.calHistorico);
+        materialCalendarView.state().edit()
                 .setMaximumDate(CalendarDay.from(2020,1,1))
                 .setMaximumDate(CalendarDay.from(2020,12,30))
                 .commit();
 
-        CalendarDay calendarDay = calendario.getCurrentDate();
-        mesSelecionado = String.format( "%02d", (calendarDay.getMonth()+1) );
-        anoSelecionado = Integer.toString( calendarDay.getYear());
+        CalendarDay calendarDay = materialCalendarView.getCurrentDate();
+        monthSelected = String.format( "%02d", (calendarDay.getMonth()+1) );
+        yearSelected = Integer.toString( calendarDay.getYear());
 
-        calendario.setOnMonthChangedListener(new OnMonthChangedListener() {
+        materialCalendarView.setOnMonthChangedListener(new OnMonthChangedListener() {
             @Override
             public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
 
-                mesSelecionado = String.format( "%02d", (date.getMonth()+1) );
-                anoSelecionado =  Integer.toString( date.getYear() );
+                monthSelected = String.format( "%02d", (date.getMonth()+1) );
+                yearSelected =  Integer.toString( date.getYear() );
                 getItems();
 
             }
         });
 
-        fabAgendar.setOnClickListener(new View.OnClickListener() {
+        fabSchedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent( HistoryActivity.this, Slide01Activity.class));
@@ -95,19 +95,19 @@ public class HistoryActivity extends AppCompatActivity {
 
     public void getItems(){
 
-        Toast.makeText(this, "data" + mesSelecionado + anoSelecionado, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "data" + monthSelected + yearSelected, Toast.LENGTH_SHORT).show();
 
         retrofit = RetrofitConfig.retrofitConfig();
         service = retrofit.create( Patient.class);
-        Call<ArraySchedule> call = service.historicPatient(Integer.parseInt(mesSelecionado),Integer.parseInt(anoSelecionado));
+        Call<ArraySchedule> call = service.historicPatient(Integer.parseInt(monthSelected),Integer.parseInt(yearSelected));
 
         call.enqueue( new Callback<ArraySchedule>() {
             @Override
             public void onResponse(Call<ArraySchedule> call, Response<ArraySchedule>response) {
                 arraySchedule = response.body();
-                fotodope = arraySchedule.schedules;
+                listSchedules = arraySchedule.schedules;
 
-                recyclerView(fotodope);
+                recyclerView(listSchedules);
             }
 
             @Override
@@ -119,7 +119,7 @@ public class HistoryActivity extends AppCompatActivity {
 
     public void recyclerView(List<Scheduling> list) {
 
-        scheduleAdapter = new ScheduleAdapter(fotodope, this);
+        scheduleAdapter = new ScheduleAdapter(listSchedules, this);
         recyclerView.setHasFixedSize( true );
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter( scheduleAdapter );
@@ -133,7 +133,7 @@ public class HistoryActivity extends AppCompatActivity {
                             public void onItemClick(View view, int position) {
                                 scheduleAdapter.notifyDataSetChanged();
 
-                                Scheduling scheduling = fotodope.get(position);
+                                Scheduling scheduling = listSchedules.get(position);
                                 idPatient = scheduling.get_id();
                                 status = scheduling.getStatus();
                                 editor.putString( "idRecord", idPatient);
@@ -196,7 +196,7 @@ public class HistoryActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
                 int pos = viewHolder.getAdapterPosition();
-                Scheduling schedule = fotodope.get(pos);
+                Scheduling schedule = listSchedules.get(pos);
 
                 status = schedule.getStatus();
 

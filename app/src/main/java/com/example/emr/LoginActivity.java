@@ -26,15 +26,14 @@ import retrofit2.Retrofit;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText campoNome, campoSenha;
-    private Button btEnviar, btSair;
-    private TextView txtRecuperar;
-    private String email, senha;
-    private String getToken, Profile;
+    private EditText edtName, edtPassword;
+    private Button btnSend, btnClose;
+    private TextView txtRecovery;
+    private String email, password;
+    private String getToken, profile;
     private Retrofit retrofit;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-    private Boolean boolToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,22 +43,22 @@ public class LoginActivity extends AppCompatActivity {
         getWindow().setStatusBarColor( Color.parseColor( "#304FFE" ));
         getSupportActionBar().hide();
 
-        txtRecuperar = findViewById( R.id.txtRecuperar );
-        campoNome = findViewById(R.id.edtNome);
-        campoSenha = findViewById(R.id.edtSenha);
-        btEnviar = findViewById(R.id.btnEntrar);
-        btSair = findViewById(R.id.btSair);
+        txtRecovery = findViewById( R.id.txtRecuperar );
+        edtName = findViewById(R.id.edtNome);
+        edtPassword = findViewById(R.id.edtSenha);
+        btnSend = findViewById(R.id.btnEntrar);
+        btnClose = findViewById(R.id.btSair);
         sharedPreferences = getSharedPreferences("salvarToken", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
-        txtRecuperar.setOnClickListener( new View.OnClickListener() {
+        txtRecovery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity( new Intent( getApplicationContext(), RepareActivity.class ) );
             }
         } );
 
-        btSair.setOnClickListener( new View.OnClickListener() {
+        btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity( new Intent(getApplicationContext(), MainActivity.class ) );
@@ -67,16 +66,16 @@ public class LoginActivity extends AppCompatActivity {
             }
         } );
 
-        btEnviar.setOnClickListener( new View.OnClickListener() {
+        btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                email = campoNome.getText().toString();
-                senha = campoSenha.getText().toString();
+                email = edtName.getText().toString();
+                password = edtPassword.getText().toString();
 
                 retrofit = RetrofitConfig.retrofitConfig();
 
-                User token = new User( email, senha );
+                User token = new User( email, password);
 
                 Authentication authentication = retrofit.create( Authentication.class );
                 Call<User> POST = authentication.acessApp( token );
@@ -91,9 +90,8 @@ public class LoginActivity extends AppCompatActivity {
                         getToken = response.body().getToken();
 
                         editor.putString( "email", email );
-                        editor.putString( "pass", senha );
+                        editor.putString( "pass", password);
                         editor.putString( "id", user.getId() );
-
                         editor.putString( "token", getToken );
                         editor.commit();
 
@@ -107,12 +105,11 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onResponse(Call<User> call, Response<User> response) {
                                     if (response.isSuccessful()) {
 
-                                        Profile = response.body().getProfile();
+                                        profile = response.body().getProfile();
                                         String name = response.body().getName();
                                         String id = response.body().getId();
-                                        editor.putString( "name", name);
-
                                         String cpf = response.body().getCpf();
+
                                         editor.putString( "user_name", name);
                                         editor.putString( "user_email", email);
                                         editor.putString( "document", cpf);
@@ -120,9 +117,9 @@ public class LoginActivity extends AppCompatActivity {
                                         editor.putString("id",id);
                                         editor.commit();
 
-                                        if (Profile.equals( "medic" )) {
+                                        if (profile.equals( "medic" )) {
                                             menuMedico();
-                                        } else if (Profile.equals( "patient" )) {
+                                        } else if (profile.equals( "patient" )) {
                                             menuPaciente();
                                         }
                                     }
@@ -151,18 +148,17 @@ public class LoginActivity extends AppCompatActivity {
             }
         } );
 
-    boolToken = sharedPreferences.getBoolean("salvarToken", true);
     getToken = sharedPreferences.getString("token", null);
-        if (boolToken == true && getToken != null) {
-        campoNome.setText(sharedPreferences.getString("email", null));
-        campoSenha.setText(sharedPreferences.getString("pass", null));
+
+    if (getToken != null) {
+        edtName.setText(sharedPreferences.getString("email", null));
+        edtPassword.setText(sharedPreferences.getString("pass", null));
     }
 }
 
     public void menuPaciente() {
         startActivity(new Intent(this, MenuUsrActivity.class));
     }
-
     public void menuMedico() {
         startActivity(new Intent(this, MenuDocActivity.class));
     }

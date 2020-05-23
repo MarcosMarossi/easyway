@@ -14,7 +14,35 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCurrentDate" />
+
+    <TextView
+        android:id="@+id/txtNameUser"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:background="#00897B"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    </android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/txtCurrentDate"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:background="#00897B"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#E8E8E8"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNameUser" />
+
+</android.support.constraint.ConstraintLayout>

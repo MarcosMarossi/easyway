@@ -64,7 +64,9 @@
     <string name="avisos_titulo">Avisos</string>
 
 
-    // API Calendario Semanas
+    // Menu Usuário
+    <string name="titulo_prontuario">Prontuário</string>
+    <string name="resumo_prontuario">Acesse seu prontuário.</string>
 
 
     // Menu Sair Usuário
@@ -89,7 +91,6 @@
     </string-array>
 
     // Verificar
-
     <string name="tit_agendar">Agendar</string>
     <string name="tit_avisos">Avisos</string>
     <string name="tit_historico">Histórico</string>
@@ -100,9 +101,9 @@
     <string name="tit_criar_avisos">Criar Avisos</string>
     <string name="tit_qr_code">Qr Code</string>
 
-    <string name="desc_agendar">Escolha o melhor dia para você!</string>
+    <string name="desc_agendar">Agende sua consulta.</string>
     <string name="desc_avisos">Mural de avisos do aplicativo.</string>
-    <string name="desc_historico">Consulte seus agendamentos.</string>
+    <string name="desc_historico">Consulte sua agenda.</string>
     <string name="desc_sair">Deseja sair do aplicativo?</string>
     <string name="desc_monitoramento">Monitore internações.</string>
     <string name="desc_validacao">Validações das enfermeiras.</string>
@@ -118,7 +119,6 @@
     <string name="titulo_consultas">Consultas</string>
 
     // Agendamento
-
     <string name="erro_data">Por favor, insira uma data válida!</string>
 
     <string-array name="tit_meses">
@@ -161,9 +161,7 @@
     <string name="categoria">Selecione uma categoria</string>
 
     <string name="tit_medico">Médico(a)</string>
-    <string name="title_activity_menu_usr2">MenuUsrActivity2</string>
-    <string name="title_activity_main_user">MainUserActivity</string>
-    <string name="tit_account">Conta</string>
+    <string name="tit_account">Usuário</string>
 
     <string name="tit_perfil">Perfil do Usuário</string>
     <string name="desc_perfil">Altere algumas de suas configurações</string>
@@ -190,5 +188,6 @@
 
     <string name="desc_bpm">Consulte o histórico de BPM dos pacientes</string>
 
-
+    <string name="title_activity_menu_usr2" translatable="false">MenuUsrActivity2</string>
+    <string name="title_activity_main_user" translatable="false">MainUserActivity</string>
 </resources>

@@ -22,31 +22,31 @@ public class MenuDocActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor  editor;
+    private SharedPreferences.Editor editor;
     private MenuAdapter menuAdapter;
 
     int[][] dados = {
             {R.string.tit_consulta, R.string.desc_consultas},
             {R.string.tit_monitoramento, R.string.desc_monitoramento},
-            {R.string.historico_bpm,R.string.desc_bpm},
+            {R.string.historico_bpm, R.string.desc_bpm},
             {R.string.tit_sair, R.string.desc_sair}
     };
 
-    int[] dadosImg = {R.drawable.consultas, R.drawable.monitora, R.drawable.log_user,R.drawable.arrow};
+    int[] dadosImg = {R.drawable.consultas, R.drawable.monitora, R.drawable.log_user, R.drawable.arrow};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.act_menu_doc );
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.act_menu_doc);
 
-        sharedPreferences = getSharedPreferences( "salvarToken", MODE_PRIVATE );
+        sharedPreferences = getSharedPreferences("salvarToken", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
-        recyclerView = findViewById( R.id.recyclerView );
-        menuAdapter = new MenuAdapter( getApplication(), dados, dadosImg );
-        recyclerView.setHasFixedSize( true );
-        recyclerView.setLayoutManager( new LinearLayoutManager( this ) );
-        recyclerView.setAdapter( menuAdapter );
+        recyclerView = findViewById(R.id.recyclerView);
+        menuAdapter = new MenuAdapter(getApplication(), dados, dadosImg);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(menuAdapter);
 
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(
@@ -66,7 +66,7 @@ public class MenuDocActivity extends AppCompatActivity {
                                         fechar();
                                         break;
                                     default:
-                                        Toast.makeText( MenuDocActivity.this, "Não conseguimos encontrar a melhor opção", Toast.LENGTH_SHORT ).show();
+                                        Toast.makeText(MenuDocActivity.this, "Não conseguimos encontrar a melhor opção", Toast.LENGTH_SHORT).show();
                                 }
                             }
 
@@ -84,18 +84,18 @@ public class MenuDocActivity extends AppCompatActivity {
         );
     }
 
-        private void abrirConsultas(){
+    private void abrirConsultas() {
         Intent intent = new Intent(MenuDocActivity.this, QueryActivity.class);
         startActivity(intent);
     }
 
     private void monitoramento() {
-        Intent intent = new Intent(MenuDocActivity.this,MonitoringActivity.class);
+        Intent intent = new Intent(MenuDocActivity.this, MonitoringActivity.class);
         startActivity(intent);
 
     }
 
-    public void fechar(){
+    public void fechar() {
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle(R.string.sair_titulo);
@@ -106,7 +106,7 @@ public class MenuDocActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 User user = new User();
                 user.setToken("");
-                editor.putString("token",user.getToken());
+                editor.putString("token", user.getToken());
                 editor.commit();
 
                 Intent intent = new Intent(MenuDocActivity.this, LoginActivity.class);
@@ -123,6 +123,10 @@ public class MenuDocActivity extends AppCompatActivity {
 
         dialog.create();
         dialog.show();
+    }
 
+    @Override
+    public void onBackPressed() {
+        this.moveTaskToBack(true);
     }
 }

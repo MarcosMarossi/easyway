@@ -14,8 +14,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light">
-        <activity android:name=".Nurse.ActPatientList" />
+        android:theme="@style/AppTheme">
+        <activity android:name=".user.patient.RecordActivity"></activity>
         <activity android:name=".RepareActivity" />
         <activity
             android:name=".user.patient.schedule.RecordUserActivity"
@@ -31,8 +31,6 @@
             android:parentActivityName=".user.patient.MenuUsrActivity" />
         <activity android:name=".user.patient.MenuUsrActivity" />
         <activity android:name=".user.patient.RecordActivity" />
-        <activity android:name=".Nurse.ActivityListPatient" />
-        <activity android:name=".Nurse.QrCodeActivity" />
         <activity
             android:name=".user.patient.schedule.Slide02Activity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -50,7 +48,6 @@
             android:name=".user.doctor.QueryActivity"
             android:label="@string/titulo_consultas"
             android:parentActivityName=".user.doctor.MenuDocActivity" />
-        <activity android:name=".Nurse.MenuNurActivity" />
         <activity android:name=".user.doctor.MenuDocActivity" />
         <activity
             android:name=".user.patient.WarningsActivity"
