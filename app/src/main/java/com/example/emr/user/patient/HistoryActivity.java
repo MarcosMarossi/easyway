@@ -25,6 +25,7 @@ import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,7 +41,7 @@ public class HistoryActivity extends AppCompatActivity {
     private String monthSelected, yearSelected, idPatient, status;
     private Patient service;
     private RecyclerView recyclerView;
-    private List<Scheduling> listSchedules = new ArrayList<>(  );
+    private List<Scheduling> list, listSchedules= new ArrayList<>(  );
     private ScheduleAdapter scheduleAdapter;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
@@ -98,8 +99,12 @@ public class HistoryActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArraySchedule> call, Response<ArraySchedule>response) {
                 arraySchedule = response.body();
-                listSchedules = arraySchedule.schedules;
-
+                list = arraySchedule.schedules;
+                for (int i = 0; i < list.size(); i++) {
+                    if(list.get(i).getStatus().contains("Agendado")){
+                        listSchedules.add(list.get(i));
+                    }
+                }
                 recyclerView(listSchedules);
             }
 
@@ -112,7 +117,7 @@ public class HistoryActivity extends AppCompatActivity {
 
     public void recyclerView(List<Scheduling> list) {
 
-        scheduleAdapter = new ScheduleAdapter(listSchedules, this);
+        scheduleAdapter = new ScheduleAdapter(list, this);
         recyclerView.setHasFixedSize( true );
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter( scheduleAdapter );
