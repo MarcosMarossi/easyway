@@ -22,8 +22,8 @@ public interface Patient {
     @POST("api/screcord/")
     Call<Scheduling> newSchedule(@Body Scheduling scheduling);
 
-    @GET("api/screcord/schedullingsByDate/5ec5c8ed66d2340007af6fae/{month}/{year}")
-    Call<ArraySchedule> historicPatient(@Path( "month" ) int month, @Path( "year" ) int year);
+    @GET("api/screcord/schedullingsByDate/{id}/{month}/{year}")
+    Call<ArraySchedule> historicPatient(@Path("id") String id, @Path( "month" ) int month, @Path( "year" ) int year);
 
     @GET("api/doctors/showBySpecialty/{speciality}")
     Call<Result> getDoctors(@Path( "speciality") String speciality);

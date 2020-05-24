@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.emr.R;
-import com.example.emr.user.patient.schedule.DataActivity;
 
 public class DetailsAcount extends AppCompatActivity {
 
@@ -41,7 +40,7 @@ public class DetailsAcount extends AppCompatActivity {
         btnChangePassword.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity( new Intent( getApplicationContext(), DataActivity.class ) );
+                startActivity( new Intent( getApplicationContext(), PasswordActivity.class ) );
             }
         } );
     }

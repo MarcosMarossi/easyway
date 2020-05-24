@@ -15,13 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".user.patient.schedule.DataActivity"
-            android:label="@string/senha"
-            android:parentActivityName=".user.patient.DetailsAcount"/>
         <activity android:name=".RepareActivity" />
         <activity
-            android:name=".user.patient.schedule.RecordUserActivity"
+            android:name=".user.patient.RecordUserActivity"
             android:label="@string/prontuario"
             android:parentActivityName=".user.patient.menu.MenuUsrActivity" />
         <activity

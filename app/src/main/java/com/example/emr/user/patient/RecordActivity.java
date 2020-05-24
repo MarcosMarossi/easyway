@@ -2,6 +2,8 @@ package com.example.emr.user.patient;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,13 +20,13 @@ import com.example.emr.configuration.RetrofitConfig;
 import com.example.emr.model.Scheduling;
 import com.example.emr.model.json.ArraySchedule;
 import com.example.emr.service.Patient;
-import com.example.emr.user.patient.schedule.RecordUserActivity;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,13 +36,12 @@ import retrofit2.Retrofit;
 public class RecordActivity extends AppCompatActivity {
 
     private MaterialCalendarView materialCalendarView;
-    private FloatingActionButton fabSchedule;
     private Retrofit retrofit;
     private ArraySchedule arraySchedule;
     private String monthSelected, yearSelected, idPatient, status;
     private Patient service;
     private RecyclerView recyclerView;
-    private List<Scheduling> listSchedules = new ArrayList<>();
+    private List<Scheduling> listSchedules, listRecords = new ArrayList<>();
     private ScheduleAdapter scheduleAdapter;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
@@ -54,7 +55,6 @@ public class RecordActivity extends AppCompatActivity {
         editor = sharedPreferences.edit();
 
         recyclerView = findViewById(R.id.recycler);
-        fabSchedule = findViewById(R.id.fabAgendar);
         idPatient = sharedPreferences.getString("idPatient", null);
 
         materialCalendarView = findViewById(R.id.calHistorico);
@@ -83,32 +83,31 @@ public class RecordActivity extends AppCompatActivity {
     }
 
     public void getItems() {
-
-
-
         retrofit = RetrofitConfig.retrofitConfig();
         service = retrofit.create(Patient.class);
-        Call<ArraySchedule> call = service.historicPatient(Integer.parseInt(monthSelected), Integer.parseInt(yearSelected));
+        Call<ArraySchedule> call = service.historicPatient(idPatient, Integer.parseInt(monthSelected), Integer.parseInt(yearSelected));
 
         call.enqueue(new Callback<ArraySchedule>() {
             @Override
             public void onResponse(Call<ArraySchedule> call, Response<ArraySchedule> response) {
                 arraySchedule = response.body();
                 listSchedules = arraySchedule.schedules;
-
-                recyclerView(listSchedules);
+                for (int i = 0; i < listSchedules.size(); i++) {
+                   if(!listSchedules.get(i).getStatus().contains("Agendado")){
+                       listRecords.add(listSchedules.get(i));
+                    }
+                }
+                recyclerView(listRecords);
             }
 
             @Override
-            public void onFailure(Call<ArraySchedule> call, Throwable t) {
-
-            }
+            public void onFailure(Call<ArraySchedule> call, Throwable t) {}
         });
     }
 
     public void recyclerView(List<Scheduling> list) {
 
-        scheduleAdapter = new ScheduleAdapter(listSchedules, this);
+        scheduleAdapter = new ScheduleAdapter(list, this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(scheduleAdapter);

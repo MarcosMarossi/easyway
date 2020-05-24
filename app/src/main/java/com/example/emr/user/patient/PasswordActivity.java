@@ -1,8 +1,6 @@
 package com.example.emr.user.patient;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,59 +20,54 @@ import retrofit2.Retrofit;
 
 public class PasswordActivity extends AppCompatActivity {
 
-    private EditText etOldPassword, etNewPassword;
-    private Button btAlterar, btnSair;
+    private EditText edtNewPassword, edtConfirmPassword;
+    private Button btChange;
     private Retrofit retrofit;
     private SharedPreferences sharedPreferences;
-    private String email, senha;
+    private String email, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.act_password );
-
-        getWindow().setStatusBarColor( Color.parseColor( "#4CAF50" ));
-        getSupportActionBar().hide();
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.act_password);
 
         sharedPreferences = getSharedPreferences("salvarToken", MODE_PRIVATE);
 
-        etOldPassword = findViewById( R.id.etOldPassword );
-        etNewPassword = findViewById( R.id.etNewPassword );
-        btAlterar = findViewById( R.id.btnChangePassword);
+        edtNewPassword = findViewById(R.id.etOldPassword);
+        edtConfirmPassword = findViewById(R.id.etNewPassword);
+        btChange = findViewById(R.id.btnChange);
 
-        btnSair.setOnClickListener( new View.OnClickListener() {
+        btChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity( new Intent( getApplicationContext(), HistoryActivity.class ) );
+                email = sharedPreferences.getString("email", null);
+                password = sharedPreferences.getString("pass", null);
+
+                String OldPassword = edtNewPassword.getText().toString();
+                String NewPassword = edtConfirmPassword.getText().toString();
+
+                User change = new User(email, password, NewPassword, OldPassword, 0);
+
+                retrofit = RetrofitConfig.retrofitConfig();
+                Patient service = retrofit.create(Patient.class);
+                Call<User> call = service.resetPassword(change);
+
+                call.enqueue(new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        if (response.isSuccessful()) {
+                            Toast.makeText(PasswordActivity.this, "Senha alterada.", Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            Toast.makeText(PasswordActivity.this, "Senhas não correspondem!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                    }
+                });
             }
-        } );
-    }
-
-    public void alterar(View view){
-        email = sharedPreferences.getString("email", null);
-        senha = sharedPreferences.getString("pass", null);
-        String OldPassword = etOldPassword.getText().toString();
-        String NewPassword = etNewPassword.getText().toString();
-
-        User change = new User( email, senha, NewPassword, OldPassword,0);
-
-        retrofit = RetrofitConfig.retrofitConfig();
-        Patient service = retrofit.create( Patient.class );
-        Call<User> call = service.resetPassword( change );
-
-        call.enqueue( new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if(response.isSuccessful()){
-                    Toast.makeText( PasswordActivity.this, "Senha alterada.", Toast.LENGTH_SHORT ).show();
-
-                } else{
-                    Toast.makeText( PasswordActivity.this, "Senhas não correspondem!", Toast.LENGTH_SHORT ).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<User> call, Throwable t) { }
-        } );
+        });
     }
 }

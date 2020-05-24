@@ -18,7 +18,6 @@ import com.example.emr.model.Scheduling;
 import com.example.emr.model.json.ArraySchedule;
 import com.example.emr.R;
 import com.example.emr.service.Patient;
-import com.example.emr.user.patient.schedule.RecordUserActivity;
 import com.example.emr.user.patient.schedule.Slide01Activity;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
@@ -93,7 +92,7 @@ public class HistoryActivity extends AppCompatActivity {
     public void getItems(){
         retrofit = RetrofitConfig.retrofitConfig();
         service = retrofit.create( Patient.class);
-        Call<ArraySchedule> call = service.historicPatient(Integer.parseInt(monthSelected),Integer.parseInt(yearSelected));
+        Call<ArraySchedule> call = service.historicPatient(idPatient, Integer.parseInt(monthSelected), Integer.parseInt(yearSelected));
 
         call.enqueue( new Callback<ArraySchedule>() {
             @Override

@@ -1,4 +1,4 @@
-package com.example.emr.user.patient.schedule;
+package com.example.emr.user.patient;
 
 import android.content.Intent;
 import android.content.SharedPreferences;

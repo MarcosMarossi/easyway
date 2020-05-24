@@ -45,7 +45,6 @@ public class Slide02Activity extends AppCompatActivity {
     private String nameDoctor, nameCategory, hourSelected, id, dateSelected, diaSelecionado, mesSelecionado, anoSelecionado, dataCompleta;
     private Spinner spCategory, spDoctor;
     private Retrofit retrofit;
-    private List<Scheduling> shedulings = new ArrayList<>();
     private ArrayList<String> names = new ArrayList<String>();
     private SharedPreferences sharedPreferences;
 
@@ -178,17 +177,15 @@ public class Slide02Activity extends AppCompatActivity {
             public void onResponse(Call<Result> call, Response<Result> response) {
                 if (response.isSuccessful()) {
                     Result test = response.body();
-                    List<User> shedulings = new ArrayList<>();
-                    shedulings = test.result;
-
+                    List<User> shedulings = test.result;
                     names.clear();
 
                     for (int i = 0; i < shedulings.size(); i++) {
                         User s = shedulings.get(i);
-                        System.out.println(s.getName());
                         names.add(s.getName());
                     }
                 }
+
                 ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(Slide02Activity.this, android.R.layout.simple_spinner_item, names);
                 spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
                 spDoctor.setAdapter(spinnerArrayAdapter);
