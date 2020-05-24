@@ -73,7 +73,7 @@ public class RecordActivity extends AppCompatActivity {
 
                 monthSelected = String.format("%02d", (date.getMonth() + 1));
                 yearSelected = Integer.toString(date.getYear());
-                Toast.makeText(getApplicationContext(), monthSelected + "/" +yearSelected, Toast.LENGTH_SHORT).show();
+                listRecords.clear();
                 getItems();
 
             }

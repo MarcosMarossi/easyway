@@ -41,7 +41,7 @@ public class HistoryActivity extends AppCompatActivity {
     private String monthSelected, yearSelected, idPatient, status;
     private Patient service;
     private RecyclerView recyclerView;
-    private List<Scheduling> list, listSchedules= new ArrayList<>(  );
+    private List<Scheduling> list, listSchedules = new ArrayList<>();
     private ScheduleAdapter scheduleAdapter;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
@@ -54,27 +54,27 @@ public class HistoryActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("salvarToken", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
-        recyclerView = findViewById( R.id.recycler );
+        recyclerView = findViewById(R.id.recycler);
         fabSchedule = findViewById(R.id.fabAgendar);
         idPatient = sharedPreferences.getString("idPatient", null);
 
         materialCalendarView = findViewById(R.id.calHistorico);
         materialCalendarView.state().edit()
-                .setMaximumDate(CalendarDay.from(2020,1,1))
-                .setMaximumDate(CalendarDay.from(2020,12,30))
+                .setMaximumDate(CalendarDay.from(2020, 1, 1))
+                .setMaximumDate(CalendarDay.from(2020, 12, 30))
                 .commit();
 
         CalendarDay calendarDay = materialCalendarView.getCurrentDate();
-        monthSelected = String.format( "%02d", (calendarDay.getMonth()+1) );
-        yearSelected = Integer.toString( calendarDay.getYear());
+        monthSelected = String.format("%02d", (calendarDay.getMonth() + 1));
+        yearSelected = Integer.toString(calendarDay.getYear());
 
         materialCalendarView.setOnMonthChangedListener(new OnMonthChangedListener() {
             @Override
             public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
 
-                monthSelected = String.format( "%02d", (date.getMonth()+1) );
-                yearSelected =  Integer.toString( date.getYear() );
-                Toast.makeText(getApplicationContext(), monthSelected + "/" +yearSelected, Toast.LENGTH_SHORT).show();
+                monthSelected = String.format("%02d", (date.getMonth() + 1));
+                yearSelected = Integer.toString(date.getYear());
+                listSchedules.clear();
                 getItems();
 
             }
@@ -83,25 +83,25 @@ public class HistoryActivity extends AppCompatActivity {
         fabSchedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent( HistoryActivity.this, Slide01Activity.class));
+                startActivity(new Intent(HistoryActivity.this, Slide01Activity.class));
             }
         });
 
         getItems();
     }
 
-    public void getItems(){
+    public void getItems() {
         retrofit = RetrofitConfig.retrofitConfig();
-        service = retrofit.create( Patient.class);
+        service = retrofit.create(Patient.class);
         Call<ArraySchedule> call = service.historicPatient(idPatient, Integer.parseInt(monthSelected), Integer.parseInt(yearSelected));
 
-        call.enqueue( new Callback<ArraySchedule>() {
+        call.enqueue(new Callback<ArraySchedule>() {
             @Override
-            public void onResponse(Call<ArraySchedule> call, Response<ArraySchedule>response) {
+            public void onResponse(Call<ArraySchedule> call, Response<ArraySchedule> response) {
                 arraySchedule = response.body();
                 list = arraySchedule.schedules;
                 for (int i = 0; i < list.size(); i++) {
-                    if(list.get(i).getStatus().contains("Agendado")){
+                    if (list.get(i).getStatus().contains("Agendado")) {
                         listSchedules.add(list.get(i));
                     }
                 }
@@ -118,9 +118,9 @@ public class HistoryActivity extends AppCompatActivity {
     public void recyclerView(List<Scheduling> list) {
 
         scheduleAdapter = new ScheduleAdapter(list, this);
-        recyclerView.setHasFixedSize( true );
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter( scheduleAdapter );
+        recyclerView.setAdapter(scheduleAdapter);
 
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(
@@ -134,22 +134,24 @@ public class HistoryActivity extends AppCompatActivity {
                                 Scheduling scheduling = listSchedules.get(position);
                                 idPatient = scheduling.get_id();
                                 status = scheduling.getStatus();
-                                editor.putString( "idRecord", idPatient);
+                                editor.putString("idRecord", idPatient);
                                 editor.commit();
 
-                                if (status.equals( "Agendado" )){
-                                    Toast.makeText( HistoryActivity.this, "Não é possível consultar. Status definido como agendado.", Toast.LENGTH_SHORT ).show();
+                                if (status.equals("Agendado")) {
+                                    Toast.makeText(HistoryActivity.this, "Não é possível consultar. Status definido como agendado.", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    startActivity( new Intent( getApplicationContext(), RecordUserActivity.class ) );
+                                    startActivity(new Intent(getApplicationContext(), RecordUserActivity.class));
                                 }
 
                             }
 
                             @Override
-                            public void onLongItemClick(View view, int position) {}
+                            public void onLongItemClick(View view, int position) {
+                            }
 
                             @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {}
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            }
                         }
                 )
         );
