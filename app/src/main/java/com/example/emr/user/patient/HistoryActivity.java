@@ -9,7 +9,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
 import com.example.emr.helper.RecyclerItemClickListener;
 import com.example.emr.adapter.ScheduleAdapter;
@@ -18,14 +17,13 @@ import com.example.emr.model.Scheduling;
 import com.example.emr.model.json.ArraySchedule;
 import com.example.emr.R;
 import com.example.emr.service.Patient;
-import com.example.emr.user.patient.schedule.Slide01Activity;
+import com.example.emr.user.patient.schedule.ApresentationActivity;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -83,7 +81,7 @@ public class HistoryActivity extends AppCompatActivity {
         fabSchedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HistoryActivity.this, Slide01Activity.class));
+                startActivity(new Intent(HistoryActivity.this, ApresentationActivity.class));
             }
         });
 
@@ -109,9 +107,7 @@ public class HistoryActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ArraySchedule> call, Throwable t) {
-
-            }
+            public void onFailure(Call<ArraySchedule> call, Throwable t) {}
         });
     }
 
@@ -130,28 +126,19 @@ public class HistoryActivity extends AppCompatActivity {
                             @Override
                             public void onItemClick(View view, int position) {
                                 scheduleAdapter.notifyDataSetChanged();
-
                                 Scheduling scheduling = listSchedules.get(position);
                                 idPatient = scheduling.get_id();
                                 status = scheduling.getStatus();
                                 editor.putString("idRecord", idPatient);
                                 editor.commit();
-
-                                if (status.equals("Agendado")) {
-                                    Toast.makeText(HistoryActivity.this, "Não é possível consultar. Status definido como agendado.", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    startActivity(new Intent(getApplicationContext(), RecordUserActivity.class));
-                                }
-
+                                startActivity(new Intent(getApplicationContext(), ScheduleUserActivity.class));
                             }
 
                             @Override
-                            public void onLongItemClick(View view, int position) {
-                            }
+                            public void onLongItemClick(View view, int position) {}
 
                             @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            }
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {}
                         }
                 )
         );

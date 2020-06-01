@@ -25,7 +25,7 @@ import com.example.emr.helper.RecyclerItemClickListener;
 import com.example.emr.user.patient.DetailsAcount;
 import com.example.emr.user.patient.HistoryActivity;
 import com.example.emr.user.patient.RecordActivity;
-import com.example.emr.user.patient.schedule.Slide01Activity;
+import com.example.emr.user.patient.schedule.ApresentationActivity;
 
 import java.time.LocalDateTime;
 
@@ -82,7 +82,7 @@ public class MenuUsrActivity extends AppCompatActivity {
                             public void onItemClick(View view, int position) {
                                 switch (position) {
                                     case 0:
-                                        startActivity(new Intent(getApplicationContext(), Slide01Activity.class));
+                                        startActivity(new Intent(getApplicationContext(), ApresentationActivity.class));
                                         break;
                                     case 1:
                                         startActivity(new Intent(getApplicationContext(), HistoryActivity.class));

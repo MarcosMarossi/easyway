@@ -33,7 +33,6 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.MyView
             holder.descricao.setText(list.get(position).getMedic());
             holder.descricao1.setText(list.get(position).getStatus());
             holder.schedule.setText( list.get( position ).get_id() );
-
     }
 
     @Override
