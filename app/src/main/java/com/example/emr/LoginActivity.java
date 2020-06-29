@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.example.emr.configuration.RetrofitConfig;
 import com.example.emr.model.User;
 import com.example.emr.service.Authentication;
-import com.example.emr.user.doctor.menu.MenuDocActivity;
 import com.example.emr.user.patient.menu.MenuUsrActivity;
 
 
@@ -43,20 +42,12 @@ public class LoginActivity extends AppCompatActivity {
         getWindow().setStatusBarColor( Color.parseColor( "#304FFE" ));
         getSupportActionBar().hide();
 
-        txtRecovery = findViewById( R.id.txtRecuperar );
         edtName = findViewById(R.id.edtNome);
         edtPassword = findViewById(R.id.edtSenha);
         btnSend = findViewById(R.id.btnEntrar);
         btnClose = findViewById(R.id.btSair);
         sharedPreferences = getSharedPreferences("salvarToken", MODE_PRIVATE);
         editor = sharedPreferences.edit();
-
-        txtRecovery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity( new Intent( getApplicationContext(), RepareActivity.class ) );
-            }
-        } );
 
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,9 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                                         editor.putString("id",id);
                                         editor.commit();
 
-                                        if (profile.equals( "medic" )) {
-                                            menuMedico();
-                                        } else if (profile.equals( "patient" )) {
+                                        if (profile.equals( "patient" )) {
                                             menuPaciente();
                                         }
                                     }
@@ -158,8 +147,5 @@ public class LoginActivity extends AppCompatActivity {
 
     public void menuPaciente() {
         startActivity(new Intent(this, MenuUsrActivity.class));
-    }
-    public void menuMedico() {
-        startActivity(new Intent(this, MenuDocActivity.class));
     }
 }

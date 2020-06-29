@@ -22,7 +22,6 @@ import com.example.emr.service.Authentication;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import com.example.emr.user.doctor.menu.MenuDocActivity;
 import com.example.emr.user.patient.menu.MenuUsrActivity;
 
 import retrofit2.Call;
@@ -76,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initList() {
         countryList = new ArrayList<>();
-        countryList.add(new CountryItem("pt-BR", R.drawable.brazil));
-        countryList.add(new CountryItem("en-US", R.drawable.usa3));
+        countryList.add(new CountryItem("PT-BR", R.drawable.brazil));
+        countryList.add(new CountryItem("USA", R.drawable.usa3));
     }
 
     public void abrirTelaLogin(View v) {
@@ -149,11 +148,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void menuMedico() {
-        Intent intent = new Intent(this, MenuDocActivity.class);
-        startActivity(intent);
-    }
-
     public void authentication(){
         retrofit = RetrofitConfig.retrofitConfig();
 
@@ -181,9 +175,7 @@ public class MainActivity extends AppCompatActivity {
 
                     if (Profile.equals("patient") && !getToken.equals("")) {
                         menuPaciente();
-                    } else if (Profile.equals("medic") && !getToken.equals("")) {
-                        menuMedico();
-                    }
+                    } 
                 }
             }
 
