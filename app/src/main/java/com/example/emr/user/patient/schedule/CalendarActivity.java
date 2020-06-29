@@ -31,8 +31,10 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -66,33 +68,41 @@ public class CalendarActivity extends AppCompatActivity {
         etHour = findViewById(R.id.etHour);
         mcv = findViewById(R.id.calendar);
 
-        mcv.state().edit().setFirstDayOfWeek(Calendar.MONDAY).setCalendarDisplayMode(CalendarMode.MONTHS).commit();
+        mcv.state()
+                .edit()
+                .setFirstDayOfWeek(Calendar.MONDAY)
+                .setCalendarDisplayMode(CalendarMode.MONTHS)
+                .commit();
+
+        mcv.setOnDateChangedListener( new OnDateSelectedListener() {
+            @Override
+            public void onDateSelected(MaterialCalendarView widget, CalendarDay date, boolean selected) {
+                dataCompleta = DataCustom.dataCorreta( date.getDay(), date.getMonth() + 1 , date.getYear() );
+            }
+        } );
 
         mcv.setOnMonthChangedListener(new OnMonthChangedListener() {
             @Override
-            public void onMonthChanged(MaterialCalendarView widget, CalendarDay calendarDay) {
-                mesSelecionado = Integer.toString(calendarDay.getMonth() + 1);
-                diaSelecionado = Integer.toString(calendarDay.getDay());
-                anoSelecionado = Integer.toString(calendarDay.getYear());
-                dataCompleta = DataCustom.dataCorreta(diaSelecionado, mesSelecionado, anoSelecionado);
+            public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
+                dataCompleta = DataCustom.dataCorreta( date.getDay(), date.getMonth()  + 1 , date.getYear() );
             }
         });
 
         etHour.addTextChangedListener(MaskEditUtil.mask(etHour, MaskEditUtil.FORMAT_HOUR));
 
         iValidate.setOnClickListener(new View.OnClickListener() {
-
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                hourSelected = etHour.getText().toString();
+                try {
+                        Toast.makeText(CalendarActivity.this, "Agendamento feito com sucesso!", Toast.LENGTH_SHORT).show();
+                        hourSelected = etHour.getText().toString();
+                        editor.putString("hour", hourSelected);
+                        editor.putString("date", dataCompleta);
+                        editor.commit();
+                        startActivity(new Intent(getApplicationContext(), SpecialityActivity.class));
 
-
-
-                editor.putString("hour", hourSelected);
-                editor.putString("date", dataCompleta);
-                editor.commit();
-                startActivity(new Intent(getApplicationContext(), SpecialityActivity.class));
+                } catch (Exception e) { e.printStackTrace(); }
             }
         });
 
@@ -103,4 +113,5 @@ public class CalendarActivity extends AppCompatActivity {
             }
         });
     }
+
 }

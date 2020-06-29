@@ -24,17 +24,13 @@ public class RecordUserActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private SharedPreferences sharedPreferences;
     private TextView txtSpeciality, txtDoctor, txtData, txtSintomas, txtStatus, txtNotas, txtDiagnostico, txtCid;
-    private Button btnSair;
     private String idSchedule;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.act_record_user );
-
-        getWindow().setStatusBarColor( Color.parseColor( "#00897B" ));
-        getSupportActionBar().hide();
+        setContentView( R.layout.act_record_details_user);
 
         txtDoctor = findViewById( R.id.txtMedico );
         txtSpeciality = findViewById( R.id.txtEspecialidade );
@@ -44,7 +40,6 @@ public class RecordUserActivity extends AppCompatActivity {
         txtNotas = findViewById( R.id.txtNotas );
         txtDiagnostico = findViewById( R.id.txtDiagnosticos );
         txtCid = findViewById( R.id.txtCid );
-        btnSair = findViewById( R.id.btnSair );
 
         sharedPreferences = getSharedPreferences("salvarToken", MODE_PRIVATE);
         idSchedule = sharedPreferences.getString("idRecord", null);
@@ -57,29 +52,19 @@ public class RecordUserActivity extends AppCompatActivity {
         call.enqueue( new Callback<Schedule>() {
             @Override
             public void onResponse(Call<Schedule> call, Response<Schedule> response) {
-
                 Schedule s = response.body();
                 txtDoctor.setText( s.schedules.getMedic() );
                 txtSpeciality.setText( s.schedules.getSpecialty() );
                 txtData.setText( s.schedules.getDate() );
-                txtSintomas.setText( s.schedules.symptoms.toString() );
-                txtCid.setText( s.schedules.cids.toString() );
+                txtSintomas.setText( s.schedules.symptoms.get(0) );
+                txtCid.setText( s.schedules.cids.get(0) );
                 txtStatus.setText( s.schedules.getStatus() );
                 txtNotas.setText( s.schedules.getMedicNotes() );
                 txtDiagnostico.setText( s.schedules.getDiagnosis() );
-
             }
             @Override
             public void onFailure(Call<Schedule> call, Throwable t) {
 
-            }
-        } );
-
-        btnSair.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity( new Intent( getApplicationContext(), RecordActivity.class ) );
-                finish();
             }
         } );
     }

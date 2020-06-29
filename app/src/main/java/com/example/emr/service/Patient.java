@@ -34,7 +34,6 @@ public interface Patient {
     @POST("auth/jwt/reset")
     Call<User> resetPassword(@Body User user);
 
-
     @GET("api/screcord/{id}")
     Call<Schedule> scheduleById(@Path( "id" ) String id);
 

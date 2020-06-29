@@ -27,7 +27,10 @@ import com.example.emr.user.patient.HistoryActivity;
 import com.example.emr.user.patient.RecordActivity;
 import com.example.emr.user.patient.schedule.ApresentationActivity;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static com.example.emr.R.*;
 
@@ -38,7 +41,7 @@ public class MenuUsrActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private String name;
-    private TextView txtNameUser, txtCurrentDate;
+    private TextView txtNameUser;
     private MenuAdapter menuAdapter;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -54,9 +57,7 @@ public class MenuUsrActivity extends AppCompatActivity {
         getSupportActionBar().setElevation(0);
 
         txtNameUser = findViewById(id.txtNameUser);
-        txtCurrentDate = findViewById(id.txtCurrentDate);
         txtNameUser.setText("Bem vindo(a), " + name);
-        txtCurrentDate.setText(LocalDateTime.now().toString());
 
         int[][] dados = {
                 {string.tit_agendar, string.desc_agendar},

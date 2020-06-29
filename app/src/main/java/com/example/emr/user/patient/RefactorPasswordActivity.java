@@ -18,7 +18,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class PasswordActivity extends AppCompatActivity {
+public class RefactorPasswordActivity extends AppCompatActivity {
 
     private EditText edtNewPassword, edtConfirmPassword;
     private Button btChange;
@@ -56,10 +56,10 @@ public class PasswordActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         if (response.isSuccessful()) {
-                            Toast.makeText(PasswordActivity.this, "Senha alterada.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RefactorPasswordActivity.this, "Senha alterada.", Toast.LENGTH_SHORT).show();
 
                         } else {
-                            Toast.makeText(PasswordActivity.this, "Senhas não correspondem!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RefactorPasswordActivity.this, "Senhas não correspondem!", Toast.LENGTH_SHORT).show();
                         }
                     }
 

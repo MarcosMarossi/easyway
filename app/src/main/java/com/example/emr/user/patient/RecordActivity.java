@@ -26,6 +26,7 @@ import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import retrofit2.Call;
@@ -70,12 +71,10 @@ public class RecordActivity extends AppCompatActivity {
         materialCalendarView.setOnMonthChangedListener(new OnMonthChangedListener() {
             @Override
             public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
-
                 monthSelected = String.format("%02d", (date.getMonth() + 1));
                 yearSelected = Integer.toString(date.getYear());
                 listRecords.clear();
                 getItems();
-
             }
         });
 
@@ -88,14 +87,14 @@ public class RecordActivity extends AppCompatActivity {
         Call<ArraySchedule> call = service.historicPatient(idPatient, Integer.parseInt(monthSelected), Integer.parseInt(yearSelected));
 
         call.enqueue(new Callback<ArraySchedule>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onResponse(Call<ArraySchedule> call, Response<ArraySchedule> response) {
                 arraySchedule = response.body();
                 listSchedules = arraySchedule.schedules;
-                for (int i = 0; i < listSchedules.size(); i++) {
-                   if(!listSchedules.get(i).getStatus().contains("Agendado")){
-                       listRecords.add(listSchedules.get(i));
-                    }
+                for(int i = 0; i < listSchedules.size(); i++) {
+                    if(listSchedules.get(i).getStatus().contains("Medicado"))
+                    listRecords.add(listSchedules.get(i));
                 }
                 recyclerView(listRecords);
             }
@@ -105,7 +104,7 @@ public class RecordActivity extends AppCompatActivity {
         });
     }
 
-    public void recyclerView(List<Scheduling> list) {
+    public void recyclerView(final List<Scheduling> list) {
 
         scheduleAdapter = new ScheduleAdapter(list, this);
         recyclerView.setHasFixedSize(true);
@@ -121,25 +120,19 @@ public class RecordActivity extends AppCompatActivity {
                             public void onItemClick(View view, int position) {
                                 scheduleAdapter.notifyDataSetChanged();
 
-                                Scheduling scheduling = listSchedules.get(position);
+                                Scheduling scheduling = list.get(position);
                                 idPatient = scheduling.get_id();
-                                status = scheduling.getStatus();
                                 editor.putString("idRecord", idPatient);
                                 editor.commit();
-
                                 startActivity(new Intent(getApplicationContext(), RecordUserActivity.class));
 
                             }
 
                             @Override
-                            public void onLongItemClick(View view, int position) {
-
-                            }
+                            public void onLongItemClick(View view, int position) { }
 
                             @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                            }
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) { }
                         }
                 )
         );

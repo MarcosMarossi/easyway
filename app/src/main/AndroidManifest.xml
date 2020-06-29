@@ -16,14 +16,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".user.patient.schedule.SpecialityActivity"></activity>
-        <activity android:name=".user.patient.ScheduleUserActivity" />
+        <activity
+            android:name=".user.patient.ScheduleUserActivity"
+            android:label="Detalhes do Agendamento"
+            android:parentActivityName=".user.patient.HistoryActivity"/>
         <activity android:name=".RepareActivity" />
         <activity
             android:name=".user.patient.RecordUserActivity"
             android:label="@string/prontuario"
-            android:parentActivityName=".user.patient.menu.MenuUsrActivity" />
+            android:parentActivityName=".user.patient.RecordActivity" />
         <activity
-            android:name=".user.patient.PasswordActivity"
+            android:name=".user.patient.RefactorPasswordActivity"
             android:label="@string/alterar_senha"
             android:parentActivityName=".user.patient.DetailsAcount" />
         <activity

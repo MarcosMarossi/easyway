@@ -40,7 +40,7 @@ public class DetailsAcount extends AppCompatActivity {
         btnChangePassword.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity( new Intent( getApplicationContext(), PasswordActivity.class ) );
+                startActivity( new Intent( getApplicationContext(), RefactorPasswordActivity.class ) );
             }
         } );
     }

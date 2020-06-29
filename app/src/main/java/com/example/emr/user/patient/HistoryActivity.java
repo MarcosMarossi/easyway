@@ -23,6 +23,8 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
@@ -98,6 +100,7 @@ public class HistoryActivity extends AppCompatActivity {
             public void onResponse(Call<ArraySchedule> call, Response<ArraySchedule> response) {
                 arraySchedule = response.body();
                 list = arraySchedule.schedules;
+
                 for (int i = 0; i < list.size(); i++) {
                     if (list.get(i).getStatus().contains("Agendado")) {
                         listSchedules.add(list.get(i));

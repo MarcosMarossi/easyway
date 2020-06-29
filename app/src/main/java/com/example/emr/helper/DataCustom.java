@@ -1,29 +1,33 @@
 package com.example.emr.helper;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class DataCustom {
 
+    public static String dataCorreta(int dia, int mes, int ano){
+        String diaCorreto = dia > 9 ? "" + dia : "0" + dia;
+        String mesCorreto = mes > 9 ? "" + mes : "0" + mes;
+        System.out.println("sdfgbdsadffdsfvgbdsgfbvd" + diaCorreto +  mesCorreto);
+        return diaCorreto + "/" + mesCorreto + "/" + ano;
+    }
 
-    public static String dataCorreta(String d, String m, String a){
-
-        long data = System.currentTimeMillis();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat( "dd/MM/yyyy" );
-        String hoje = simpleDateFormat.format( data );
-
-        String returnoData[] = hoje.split( "/" );
-        String sday = returnoData[0]; // dia 17
-        String smonth = returnoData[1]; // mes 11
-        String syear = returnoData[2];
-
-        int dia = Integer.parseInt( d );
-        int mes = Integer.parseInt( m );
-        int ano = Integer.parseInt( a );
-
-        int diahoje = Integer.parseInt( sday );
-        int meshoje = Integer.parseInt( smonth );
-        int anohoje = Integer.parseInt( syear );
-
-        return dia + "/" + mes + "/" + ano;
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public static boolean dataValida (String data) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return LocalDate.parse(data, dtf).compareTo(LocalDate.now()) >= 0;
+    }
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public static boolean horaValida(String hour) {
+        SimpleDateFormat formato = new SimpleDateFormat("HH:mm");
+        LocalTime localTime = LocalTime.parse(formato.format(new Date((hour))));
+        System.out.println(localTime.toString());
+        return localTime.isAfter(LocalTime.parse(formato.format(new Date("08:00"))));
     }
 }
