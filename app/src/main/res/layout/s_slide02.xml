@@ -13,15 +13,15 @@
         android:background="#FFFFFF"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        tools:context=".User.Slide.SlideSecond">
+        tools:context=".user.Slide.SlideSecond">
 
         <EditText
             android:id="@+id/etHour"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
             android:drawableLeft="@drawable/ic_tempo_24dp"
             android:drawablePadding="10dp"
             android:ems="10"
@@ -32,31 +32,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-        <Spinner
-            android:id="@+id/spDoctor"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spCategory" />
-
-        <Spinner
-            android:id="@+id/spCategory"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/calendar" />
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fabConfirm"
@@ -68,7 +44,7 @@
             app:backgroundTint="#43A047"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_finish" />
+            app:srcCompat="@drawable/ic_next" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fabBack"
@@ -85,25 +61,31 @@
         <com.prolificinteractive.materialcalendarview.MaterialCalendarView
             android:id="@+id/calendar"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
+            android:layout_height="400dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etHour"
             app:mcv_selectionColor="#00F"
             app:mcv_showOtherDates="all"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints">
+
+        </com.prolificinteractive.materialcalendarview.MaterialCalendarView>
 
         <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Faça seu agendamento. É rápido e fácil!"
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:text="Informe o horário e a data \nde agendamento!"
+            android:textAlignment="center"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

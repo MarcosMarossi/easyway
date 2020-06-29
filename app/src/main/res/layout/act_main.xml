@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="#00897B"
     tools:context=".MainActivity">
 
     <Button
@@ -12,10 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_weight="1"
-        android:background="#00C853"
+        android:background="@drawable/border_blue"
         android:fontFamily="@font/ubuntu"
         android:onClick="abrirTelaCadastro"
         android:text="@string/btnCadastrar"
@@ -30,10 +30,10 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:layout_weight="1"
-        android:background="#304FFE"
+        android:background="@drawable/border_green"
         android:fontFamily="@font/ubuntu"
         android:onClick="abrirTelaLogin"
         android:text="@string/btnEntrar"
@@ -72,7 +72,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/heartbeat" />
+        app:srcCompat="@drawable/easyway" />
 
     <TextView
         android:id="@+id/textView7"
@@ -91,11 +91,11 @@
 
     <Spinner
         android:id="@+id/spinIdioma"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

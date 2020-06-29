@@ -7,9 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.emr.Config.RetrofitConfig;
-import com.example.emr.Models.User;
-import com.example.emr.Services.DataService;
+import com.example.emr.configuration.RetrofitConfig;
+import com.example.emr.model.User;
+import com.example.emr.service.Authentication;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,8 +43,8 @@ public class RepareActivity extends AppCompatActivity {
 
                 User oEmail = new User( email );
 
-                DataService service = retrofit.create( DataService.class );
-                Call<User> call = service.resetEmail( oEmail );
+                Authentication authentication = retrofit.create( Authentication.class );
+                Call<User> call = authentication.resetEmail( oEmail );
 
                 call.enqueue( new Callback<User>() {
                     @Override

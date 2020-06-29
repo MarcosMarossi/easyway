@@ -8,10 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.emr.Config.RetrofitConfig;
-import com.example.emr.Helper.MaskEditUtil;
-import com.example.emr.Models.User;
-import com.example.emr.Services.DataService;
+import com.example.emr.configuration.RetrofitConfig;
+import com.example.emr.helper.MaskEditUtil;
+import com.example.emr.model.User;
+import com.example.emr.service.Authentication;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.act_register);
 
         getSupportActionBar().hide();
-        getWindow().setStatusBarColor( Color.parseColor( "#4CAF50" ));
+        getWindow().setStatusBarColor( Color.parseColor( "#304FFE" ));
 
         etName = findViewById(R.id.edtNome);
         etCPF = findViewById(R.id.edtCPF);
@@ -62,8 +62,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                 User register = new User(name,cpf,email,password);
 
-                DataService service = retrofit.create(DataService.class);
-                Call<User> POST = service.registerNewUser(register);
+                Authentication authentication = retrofit.create(Authentication.class);
+                Call<User> POST = authentication.registerNewUser(register);
 
                 POST.enqueue(new Callback<User>() {
                     @Override
