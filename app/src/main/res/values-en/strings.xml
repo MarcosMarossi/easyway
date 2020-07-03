@@ -82,17 +82,6 @@
 
     <string name="avisos_titulo">Warnings</string>
 
-
-    // API Calendario Semanas
-    <string name="seg">Mon</string>
-    <string name="ter">Tue</string>
-    <string name="qua">Wed</string>
-    <string name="qui">Thu</string>
-    <string name="sex">Fri</string>
-    <string name="sab">Sat</string>
-    <string name="dom">Sun</string>
-
-
     // Menu Sair Usuário
     <string name="sair_sim">Yes</string>
     <string name="sair_nao">No</string>
@@ -149,7 +138,7 @@
     <string name="antiga_senha"> Old password  </string>
     <string name="nova_senha">   New password  </string>
     <string name="alterar">      Change  </string>
-    <string name="configuracoes">Settings  </string>
+    <string name="configuracoes">Settings</string>
     <string name="desc_account"> Change your information.  </string>
     <string name="prontuario">   Summary Medical Record  </string>
     <string name="historico_bpm">BPM History  </string>
@@ -160,6 +149,38 @@
     <string name="tit_status">        Status  </string>
     <string name="status_agendamento">Scheduled  </string>
     <string name="desc_bpm">          See BPM history of patients  </string>
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    <string name="basic_info">Just fill in the necessary information!</string>
+    <string name="info_hour_date">Enter the time and date \nof the appointment!</string>
+    <string name="info_doctor_spaciality">Select specialty \n and doctor of your choice</string>
+
+    <string name="speciality">Speciality:</string>
+    <string name="data">Date:</string>
+    <string name="status">Status:</string>
+
+    <string name="excluir_agendamento">Delete Schedule</string>
+
+    <string name="speciality_notdot">Speciality</string>
+    <string name="sintomas">Symptoms</string>
+    <string name="status_notdot">Status</string>
+    <string name="diagnosticos">Diagnostics</string>
+    <string name="notas">Notes</string>
+
+    <string name="historicotitle">Historic</string>
+    <string name="prontuariotitle">Record</string>
+    <string name="detalhes_agendamento">Scheduling Details</string>
+    <string name="detalhes_prontuario">Record Details</string>
+    <string name="perfil_usuario">User Profile</string>
+
+    <string name="boasvindas">Welcome, </string>
+
+    <string name="sucesso_agendamento">Successful scheduling</string>
+    <string name="erro_agendamento">Failed to schedule</string>
+
+    <string name="detalhes_agendamento_msg">View all your scheduling information</string>
+    <string name="detalhes_prontuario_msg">View all information from your medical records</string>
 
 
 </resources>

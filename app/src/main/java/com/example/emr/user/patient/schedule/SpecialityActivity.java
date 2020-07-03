@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.emr.R;
 import com.example.emr.configuration.RetrofitConfig;
@@ -91,13 +92,14 @@ public class SpecialityActivity extends AppCompatActivity {
                 chm.enqueue(new Callback<Scheduling>() {
                     @Override
                     public void onResponse(Call<Scheduling> call, Response<Scheduling> response) {
+                        Toast.makeText(SpecialityActivity.this, R.string.sucesso_agendamento, Toast.LENGTH_SHORT).show();
                         finish();
                         startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
                     }
 
                     @Override
                     public void onFailure(Call<Scheduling> call, Throwable t) {
-
+                        Toast.makeText(SpecialityActivity.this, R.string.erro_agendamento , Toast.LENGTH_SHORT).show();
                     }
                 });
             }

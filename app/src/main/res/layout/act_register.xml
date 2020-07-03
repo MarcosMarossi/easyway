@@ -169,7 +169,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="@string/app_name"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#D32F2F"
             android:textSize="36sp"
             app:fontFamily="@font/supermercado_one"
             app:layout_constraintEnd_toEndOf="parent"
@@ -180,11 +180,11 @@
             android:id="@+id/imageView5"
             android:layout_width="180dp"
             android:layout_height="130dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/smartwatch" />
+            app:srcCompat="@drawable/easyway" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

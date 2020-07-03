@@ -14,7 +14,6 @@ public class DataCustom {
     public static String dataCorreta(int dia, int mes, int ano){
         String diaCorreto = dia > 9 ? "" + dia : "0" + dia;
         String mesCorreto = mes > 9 ? "" + mes : "0" + mes;
-        System.out.println("sdfgbdsadffdsfvgbdsgfbvd" + diaCorreto +  mesCorreto);
         return diaCorreto + "/" + mesCorreto + "/" + ano;
     }
 

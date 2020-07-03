@@ -95,7 +95,6 @@ public class CalendarActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                        Toast.makeText(CalendarActivity.this, "Agendamento feito com sucesso!", Toast.LENGTH_SHORT).show();
                         hourSelected = etHour.getText().toString();
                         editor.putString("hour", hourSelected);
                         editor.putString("date", dataCompleta);

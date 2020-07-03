@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.example.emr.helper.RecyclerItemClickListener;
 import com.example.emr.adapter.ScheduleAdapter;
@@ -59,7 +60,8 @@ public class HistoryActivity extends AppCompatActivity {
         idPatient = sharedPreferences.getString("idPatient", null);
 
         materialCalendarView = findViewById(R.id.calHistorico);
-        materialCalendarView.state().edit()
+        materialCalendarView.state()
+                .edit()
                 .setMaximumDate(CalendarDay.from(2020, 1, 1))
                 .setMaximumDate(CalendarDay.from(2020, 12, 30))
                 .commit();

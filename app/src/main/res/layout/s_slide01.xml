@@ -34,7 +34,7 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/ubuntu"
         android:gravity="center"
-        android:text="Basta preencher as informações necessárias!"
+        android:text="@string/basic_info"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="20sp"

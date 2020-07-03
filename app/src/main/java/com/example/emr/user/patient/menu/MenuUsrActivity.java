@@ -1,5 +1,6 @@
 package com.example.emr.user.patient.menu;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -44,6 +45,7 @@ public class MenuUsrActivity extends AppCompatActivity {
     private TextView txtNameUser;
     private MenuAdapter menuAdapter;
 
+    @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,7 @@ public class MenuUsrActivity extends AppCompatActivity {
         getSupportActionBar().setElevation(0);
 
         txtNameUser = findViewById(id.txtNameUser);
-        txtNameUser.setText("Bem vindo(a), " + name);
+        txtNameUser.setText(name);
 
         int[][] dados = {
                 {string.tit_agendar, string.desc_agendar},

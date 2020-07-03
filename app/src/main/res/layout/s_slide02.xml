@@ -82,7 +82,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="24dp"
-            android:text="Informe o horário e a data \nde agendamento!"
+            android:text="@string/info_hour_date"
             android:textAlignment="center"
             android:textSize="18sp"
             android:textStyle="bold"
