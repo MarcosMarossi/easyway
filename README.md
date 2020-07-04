@@ -1,7 +1,7 @@
 [![Generic badge](https://img.shields.io/badge/Android%20API-23-green)](https://shields.io/)
 # App Vida Saudável
 
-![alt text](https://image.flaticon.com/icons/svg/3068/3068087.svg)
+![alt text](https://image.flaticon.com/icons/svg/3068/3068087.svg | width=100)
 
 EasyWay, faça o acompanhamento dos seus pacientes em tempo real.
 
