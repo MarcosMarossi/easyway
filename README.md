@@ -1,11 +1,11 @@
 [![Generic badge](https://img.shields.io/badge/Android%20API-23-green)](https://shields.io/)
-## EasyWay - Faça o acompanhamento dos seus pacientes em tempo real
+## EasyWay 
+Faça o acompanhamento dos seus pacientes em tempo real
+
+<img src="https://image.flaticon.com/icons/svg/3068/3068087.svg" height="300">
 
 
-![alt text](https://image.flaticon.com/icons/svg/3068/3068087.svg)
-
-
-### Aplicativo para o projeto interdisciplinar 5º Semestre - Fatec Indaiatuba 
+### Projeto interdisciplinar 6º Semestre - Fatec Indaiatuba
 
 #### Funcionalidades
 
@@ -20,6 +20,6 @@
 * [ ] Android.
 * [ ] Java.
 * [ ] API Retrofit.
-* [ ] Nodejs.
-* [ ] MongoDB.
-* [ ] Amazon AWS.
+* [ ] Gradle.
+
+Site para gerenciamento médico do EasyWay: https://stupefied-bhaskara-b1e159.netlify.app/
