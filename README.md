@@ -1,6 +1,7 @@
 [![Generic badge](https://img.shields.io/badge/Android%20API-23-green)](https://shields.io/)
 ## EasyWay 
-Faça o acompanhamento dos seus pacientes em tempo real
+Aplicativo desenvolvido para dispositivos móveis Android. Com o intuíto de tornar mais prático o agendamento 
+médico e tornar o prontuário/ prescrição médica mais próximo dos pacientes.
 
 <img src="https://image.flaticon.com/icons/svg/3068/3068087.svg" height="300">
 
@@ -22,4 +23,15 @@ Faça o acompanhamento dos seus pacientes em tempo real
 * [ ] API Retrofit.
 * [ ] Gradle.
 
-Site para gerenciamento médico do EasyWay: https://stupefied-bhaskara-b1e159.netlify.app/
+Como complemento do aplicativo foi criado um site para gerenciamento médico, onde o doutor poderá medicar seus pacientes
+de forma rápida e fácil. 
+
+Site : https://stupefied-bhaskara-b1e159.netlify.app/
+
+#### Participantes do projeto:
+
+@vitor-isb
+@THIAGODENNY
+@evansfritsch
+@MarcosMarossi
+@	FlaviaVilar
