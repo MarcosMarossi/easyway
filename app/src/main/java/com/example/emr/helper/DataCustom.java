@@ -20,13 +20,6 @@ public class DataCustom {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static boolean dataValida (String data) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return LocalDate.parse(data, dtf).compareTo(LocalDate.now()) >= 0;
-    }
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public static boolean horaValida(String hour) {
-        SimpleDateFormat formato = new SimpleDateFormat("HH:mm");
-        LocalTime localTime = LocalTime.parse(formato.format(new Date((hour))));
-        System.out.println(localTime.toString());
-        return localTime.isAfter(LocalTime.parse(formato.format(new Date("08:00"))));
+        return LocalDate.parse(data, dtf).isAfter(LocalDate.now());
     }
 }

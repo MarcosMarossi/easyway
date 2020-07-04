@@ -95,13 +95,19 @@ public class CalendarActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                        hourSelected = etHour.getText().toString();
+                    hourSelected = etHour.getText().toString();
+
+                    if(DataCustom.dataValida(dataCompleta) && !hourSelected.isEmpty()){
                         editor.putString("hour", hourSelected);
                         editor.putString("date", dataCompleta);
                         editor.commit();
                         startActivity(new Intent(getApplicationContext(), SpecialityActivity.class));
-
-                } catch (Exception e) { e.printStackTrace(); }
+                    } else {
+                        Toast.makeText(CalendarActivity.this, "A hora ou data selecionada pode estar inválida.", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(CalendarActivity.this, "Erro ao enviar as informações.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

@@ -129,7 +129,7 @@
     <string name="validacao_nome">Invalid name. Please enter your full name. </string>
     <string name="categoria">   Select a category </string>
     <string name="tit_medico">  Doctor </string>
-    <string name="tit_account"> Account </string>
+    <string name="tit_account">Configurations</string>
 
     <string name="tit_perfil">   User Profile  </string>
     <string name="desc_perfil">  Change some of your settings  </string>
@@ -182,6 +182,7 @@
     <string name="detalhes_agendamento_msg">View all your scheduling information</string>
     <string name="detalhes_prontuario_msg">View all information from your medical records</string>
 
-
+    <string name="validation_register">Registration successfully performed!</string>
+    <string name="validation_register_error">The password must contain 8 characters and the email must be valid!</string>
 </resources>
 

@@ -159,7 +159,7 @@
     <string name="categoria">Selecione uma categoria</string>
 
     <string name="tit_medico">Médico(a)</string>
-    <string name="tit_account">Usuário</string>
+    <string name="tit_account">Configurações</string>
 
     <string name="tit_perfil">Perfil do Usuário</string>
     <string name="desc_perfil">Altere algumas de suas configurações</string>
@@ -232,5 +232,8 @@
     <string name="outubro">Outubro</string>
     <string name="novembro">Novembro</string>
     <string name="dezembro">Dezembro</string>
+
+    <string name="validation_register">Cadastro realizado com sucesso!</string>
+    <string name="validation_register_error">A senha deve conter 8 caracteres e o e-mail deve ser válido!</string>
 
 </resources>
