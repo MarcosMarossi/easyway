@@ -1,9 +1,11 @@
 [![Generic badge](https://img.shields.io/badge/Android%20API-23-green)](https://shields.io/)
-# App Vida Saudável
+# EasyWay
+
 
 ![alt text](https://image.flaticon.com/icons/svg/3068/3068087.svg)
 
-EasyWay, faça o acompanhamento dos seus pacientes em tempo real.
+
+## Faça o acompanhamento dos seus pacientes em tempo real.
 
 Aplicativo para o projeto interdisciplinar 5º Semestre - Fatec Indaiatuba 
 
