@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.emr.R;
 import com.example.emr.configuration.RetrofitConfig;
@@ -46,7 +47,6 @@ public class SpecialityActivity extends AppCompatActivity {
         fabBack = findViewById(R.id.fabBack);
         spCategory = findViewById(R.id.spCategory);
         spDoctor = findViewById(R.id.spDoctor);
-
         getSupportActionBar().hide();
 
         sharedPreferences = getSharedPreferences("salvarToken", MODE_PRIVATE);
@@ -64,10 +64,12 @@ public class SpecialityActivity extends AppCompatActivity {
         spCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 nameCategory = spCategory.getSelectedItem().toString();
+                if (!nameCategory.contains("Selec")) spDoctor.setVisibility(View.VISIBLE);
                 callRetrofit();
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
+                spDoctor.setVisibility(View.INVISIBLE);
             }
         });
         spDoctor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -82,24 +84,28 @@ public class SpecialityActivity extends AppCompatActivity {
         fabConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String dataFormat = hourSelected + " " + dateSelected;
-                Scheduling schedule = new Scheduling(id, nameCategory, nameDoctor, dataFormat, "Agendado");
+                if (!nameCategory.contains("Selec") && !nameDoctor.contains("Selec")) {
+                    String dataFormat = hourSelected + " " + dateSelected;
+                    Scheduling schedule = new Scheduling(id, nameCategory, nameDoctor, dataFormat, "Agendado");
+                    retrofit = RetrofitConfig.retrofitConfig();
+                    Patient service1 = retrofit.create(Patient.class);
+                    Call<Scheduling> chm = service1.newSchedule(schedule);
+                    chm.enqueue(new Callback<Scheduling>() {
+                        @Override
+                        public void onResponse(Call<Scheduling> call, Response<Scheduling> response) {
+                            Toast.makeText(SpecialityActivity.this, R.string.sucesso_agendamento, Toast.LENGTH_SHORT).show();
+                            finish();
+                            startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
+                        }
 
-                retrofit = RetrofitConfig.retrofitConfig();
-                Patient service1 = retrofit.create(Patient.class);
-                Call<Scheduling> chm = service1.newSchedule(schedule);
-                chm.enqueue(new Callback<Scheduling>() {
-                    @Override
-                    public void onResponse(Call<Scheduling> call, Response<Scheduling> response) {
-                        finish();
-                        startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
-                    }
-
-                    @Override
-                    public void onFailure(Call<Scheduling> call, Throwable t) {
-
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<Scheduling> call, Throwable t) {
+                            Toast.makeText(SpecialityActivity.this, R.string.erro_agendamento, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else {
+                    Toast.makeText(SpecialityActivity.this, R.string.erro_agendamento, Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -120,25 +126,24 @@ public class SpecialityActivity extends AppCompatActivity {
         call.enqueue(new Callback<Result>() {
             @Override
             public void onResponse(Call<Result> call, Response<Result> response) {
-                if (response.isSuccessful()) {
-                    Result result = response.body();
-                    List<User> shedulings = result.result;
-                    names.clear();
+                Result result = response.body();
+                List<User> shedulings = result.result;
+                names.clear();
 
-                    for (int i = 0; i < shedulings.size(); i++) {
-                        User s = shedulings.get(i);
-                        names.add(s.getName());
-                    }
+                for (int i = 0; i < shedulings.size(); i++) {
+                    User s = shedulings.get(i);
+                    if (i == 0) names.add("Selecione um doutor");
+                    names.add(s.getName());
                 }
 
                 ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(SpecialityActivity.this, android.R.layout.simple_spinner_item, names);
-                spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+                spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spDoctor.setAdapter(spinnerArrayAdapter);
             }
 
             @Override
             public void onFailure(Call<Result> call, Throwable t) {
-                Log.d("404", "Ocorreu um erro: " + t);
+                Toast.makeText(SpecialityActivity.this, "Erro na requisição", Toast.LENGTH_SHORT).show();
             }
         });
     }

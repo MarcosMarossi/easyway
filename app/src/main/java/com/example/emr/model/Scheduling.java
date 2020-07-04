@@ -18,6 +18,17 @@ public class Scheduling {
     public String diagnosis;
     public String status;
 
+    public Scheduling() {
+    }
+
+    public Scheduling(String id, String specialty, String medic, String date, String status) {
+        this.patient = id;
+        this.specialty = specialty;
+        this.medic = medic;
+        this.date = date;
+        this.status = status;
+    }
+
     public List<String> getSymptoms() {
         return symptoms;
     }
@@ -64,14 +75,6 @@ public class Scheduling {
 
     public void set_id(String _id) {
         this._id = _id;
-    }
-
-    public Scheduling(String id, String specialty, String medic, String date, String status) {
-        this.patient = id;
-        this.specialty = specialty;
-        this.medic = medic;
-        this.date = date;
-        this.status = status;
     }
 
     public String getName() {
@@ -128,8 +131,5 @@ public class Scheduling {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public Scheduling() {
     }
 }

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" translatable="false">EasyWay</string>
     <string name="titulo_login">Acessar conta</string>
     <string name="titulo_cadastrar">Cadastrar conta</string>
@@ -53,8 +53,6 @@
         <item>DE</item>
         <item>IT</item>
     </string-array>
-
-
     // Histórico
 
     <string name="historico">Histórico</string>
@@ -161,7 +159,7 @@
     <string name="categoria">Selecione uma categoria</string>
 
     <string name="tit_medico">Médico(a)</string>
-    <string name="tit_account">Usuário</string>
+    <string name="tit_account">Configurações</string>
 
     <string name="tit_perfil">Perfil do Usuário</string>
     <string name="desc_perfil">Altere algumas de suas configurações</string>
@@ -190,4 +188,53 @@
 
     <string name="title_activity_menu_usr2" translatable="false">MenuUsrActivity2</string>
     <string name="title_activity_main_user" translatable="false">MainUserActivity</string>
+
+    // Novos ****** Novo *******
+    <string name="basic_info">Basta preencher as informações necessárias!</string>
+    <string name="info_hour_date">Informe o horário e a data \nde agendamento!</string>
+    <string name="info_doctor_spaciality">Selecione a especialidade \n e o doutor de sua preferência</string>
+
+    <string name="speciality">Especialidade:</string>
+    <string name="data">Data:</string>
+    <string name="status">Status:</string>
+
+    <string name="excluir_agendamento">Excluir Agendamento</string>
+
+    <string name="speciality_notdot">Especialidade</string>
+    <string name="sintomas">Sintomas</string>
+    <string name="status_notdot">Status</string>
+    <string name="diagnosticos">Diagnósticos</string>
+    <string name="notas">Notas</string>
+
+    <string name="historicotitle">Histórico</string>
+    <string name="prontuariotitle">Prontuário</string>
+    <string name="detalhes_agendamento">Detalhes do Agendamento</string>
+    <string name="detalhes_prontuario">Detalhes do Prontuário</string>
+    <string name="perfil_usuario">Perfil do Usuário</string>
+
+    <string name="boasvindas">Bem-vindo(a), </string>
+
+    <string name="sucesso_agendamento">Agendamento realizado com sucesso</string>
+    <string name="erro_agendamento">Falha ao realizar o agendamento</string>
+
+    <string name="detalhes_agendamento_msg">Visualize todas as informações dos seus agendamentos</string>
+    <string name="detalhes_prontuario_msg">Visualize todas as informações dos seus prontuários</string>
+
+    // API Calendario Meses
+    <string name="janeiro">Janeiro</string>
+    <string name="fevereiro">Fevereiro</string>
+    <string name="marco">Março</string>
+    <string name="abril">Abril</string>
+    <string name="maio">Maio</string>
+    <string name="junho">Junho</string>
+    <string name="julho">Julho</string>
+    <string name="agosto">Agosto</string>
+    <string name="setembro">Setembro</string>
+    <string name="outubro">Outubro</string>
+    <string name="novembro">Novembro</string>
+    <string name="dezembro">Dezembro</string>
+
+    <string name="validation_register">Cadastro realizado com sucesso!</string>
+    <string name="validation_register_error">A senha deve conter 8 caracteres e o e-mail deve ser válido!</string>
+
 </resources>

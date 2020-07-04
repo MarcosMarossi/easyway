@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.emr.configuration.RetrofitConfig;
 import com.example.emr.helper.MaskEditUtil;
@@ -60,24 +61,29 @@ public class RegisterActivity extends AppCompatActivity {
                 email = edtEmail.getText().toString();
                 password = edtPassword.getText().toString();
 
-                User register = new User(name,cpf,email,password);
+                if(email.contains("@") && password.length() >= 8) {
+                    User register = new User(name,cpf,email,password);
 
-                Authentication authentication = retrofit.create(Authentication.class);
-                Call<User> POST = authentication.registerNewUser(register);
+                    Authentication authentication = retrofit.create(Authentication.class);
+                    Call<User> POST = authentication.registerNewUser(register);
 
-                POST.enqueue(new Callback<User>() {
-                    @Override
-                    public void onResponse(Call<User> call, Response<User> response) {
-                        User register = response.body();
-                        token = register.getToken();
-                        login();
-                    }
+                    POST.enqueue(new Callback<User>() {
+                        @Override
+                        public void onResponse(Call<User> call, Response<User> response) {
+                            User register = response.body();
+                            token = register.getToken();
+                            Toast.makeText(RegisterActivity.this, R.string.validation_register, Toast.LENGTH_SHORT).show();
+                            login();
+                        }
 
-                    @Override
-                    public void onFailure(Call<User> call, Throwable t) {
+                        @Override
+                        public void onFailure(Call<User> call, Throwable t) {
 
-                    }
-                });
+                        }
+                    });
+                } else {
+                    Toast.makeText(RegisterActivity.this, R.string.validation_register_error, Toast.LENGTH_SHORT).show();
+                }                
             }
         });
     }

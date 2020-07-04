@@ -18,12 +18,12 @@
         <activity android:name=".user.patient.schedule.SpecialityActivity"></activity>
         <activity
             android:name=".user.patient.ScheduleUserActivity"
-            android:label="Detalhes do Agendamento"
+            android:label="@string/detalhes_agendamento"
             android:parentActivityName=".user.patient.HistoryActivity"/>
         <activity android:name=".RepareActivity" />
         <activity
             android:name=".user.patient.RecordUserActivity"
-            android:label="@string/prontuario"
+            android:label="@string/detalhes_prontuario"
             android:parentActivityName=".user.patient.RecordActivity" />
         <activity
             android:name=".user.patient.RefactorPasswordActivity"
@@ -44,21 +44,8 @@
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".user.patient.schedule.ApresentationActivity" />
         <activity
-            android:name=".user.doctor.ValidationActivity"
-            android:label="@string/titulo_validar"
-            android:parentActivityName=".user.doctor.menu.MenuDocActivity" />
-        <activity
-            android:name=".user.doctor.MonitoringActivity"
-            android:label="@string/titulo_monitorar"
-            android:parentActivityName=".user.doctor.menu.MenuDocActivity" />
-        <activity
-            android:name=".user.doctor.QueryActivity"
-            android:label="@string/titulo_consultas"
-            android:parentActivityName=".user.doctor.menu.MenuDocActivity" />
-        <activity android:name=".user.doctor.menu.MenuDocActivity" />
-        <activity
             android:name=".user.patient.HistoryActivity"
-            android:label="@string/historico"
+            android:label="@string/historicotitle"
             android:parentActivityName=".user.patient.menu.MenuUsrActivity" />
         <activity
             android:name=".RegisterActivity"
