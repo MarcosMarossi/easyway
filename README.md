@@ -1,13 +1,11 @@
 [![Generic badge](https://img.shields.io/badge/Android%20API-23-green)](https://shields.io/)
-# EasyWay
+# EasyWay - Faça o acompanhamento dos seus pacientes em tempo real
 
 
 ![alt text](https://image.flaticon.com/icons/svg/3068/3068087.svg)
 
 
-## Faça o acompanhamento dos seus pacientes em tempo real.
-
-Aplicativo para o projeto interdisciplinar 5º Semestre - Fatec Indaiatuba 
+## Aplicativo para o projeto interdisciplinar 5º Semestre - Fatec Indaiatuba 
 
 ## Funcionalidades
 
