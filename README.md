@@ -1,13 +1,13 @@
 [![Generic badge](https://img.shields.io/badge/Android%20API-23-green)](https://shields.io/)
-# EasyWay - Faça o acompanhamento dos seus pacientes em tempo real
+## EasyWay - Faça o acompanhamento dos seus pacientes em tempo real
 
 
 ![alt text](https://image.flaticon.com/icons/svg/3068/3068087.svg)
 
 
-## Aplicativo para o projeto interdisciplinar 5º Semestre - Fatec Indaiatuba 
+### Aplicativo para o projeto interdisciplinar 5º Semestre - Fatec Indaiatuba 
 
-## Funcionalidades
+#### Funcionalidades
 
 * [ ] Múltiplos idiomas na tela principal do aplicativo.
 * [ ] Idioma na tela de configuração.
@@ -15,7 +15,7 @@
 * [ ] Histórico de todos os prontuários do paciente.
 * [ ] Diferentes tipos de perfis, tais como: paciente, médico e administrador.
 
-## Tecnologias Utilizadas no Desenvolvimento
+#### Tecnologias Utilizadas no Desenvolvimento
 
 * [ ] Android.
 * [ ] Java.
